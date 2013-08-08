@@ -1,0 +1,8 @@
+name = "Islandora ADELTA"
+description = "A default Islandora Repository module for ADELTA project"
+dependencies[] = islandora
+package = Islandora
+core = 7.x
+version = 7.x-1.1
+configure = admin/islandora/adelta
+stylesheets[all][] = css/islandora_adelta.theme.css

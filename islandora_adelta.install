@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Install hooks for this module.
+ */
+
+/**
+ * Implements hook_install().
+ *
+ * @see islandora_basic_image_islandora_required_objects()
+ */
+function islandora_adelta_install() {
+  module_load_include('inc', 'islandora', 'includes/solution_packs');
+  islandora_install_solution_pack('islandora_adelta');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function islandora_adelta_uninstall() {
+  module_load_include('inc', 'islandora', 'includes/solution_packs');
+  islandora_install_solution_pack('islandora_adelta', 'uninstall');
+}
