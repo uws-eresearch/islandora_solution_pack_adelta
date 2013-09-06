@@ -73,7 +73,7 @@
 				<delete></delete></actions></properties></element>
 	<element name="entry_author">
 		<properties>
-			<type>textfield</type>
+			<type>fieldset</type>
 			<access>TRUE</access>
 			<required>FALSE</required>
 			<title>Entry author</title>
@@ -81,23 +81,162 @@
 			<actions>
 				<create>
 					<path>self::node()</path>
-					<context>parent</context></create>
+					<context>parent</context>
+					<schema></schema>
+					<type>element</type>
+					<prefix>NULL</prefix>
+					<value>name</value></create>
 				<read>
 					<path>mods:name</path>
 					<context>parent</context></read>
-				<update></update>
-				<delete></delete></actions></properties></element>
-	<element name="originInfo"><properties><type>fieldset</type><access>TRUE</access><required>FALSE</required><title>Origin Information</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>element</type><prefix>NULL</prefix><value>originInfo</value></create><read><path>mods:originInfo</path><context>parent</context></read><update>NULL</update><delete>NULL</delete></actions></properties><children><element name="dateIssued"><properties><type>textfield</type><access>TRUE</access><description>Enter date in the format YYYY-MM-DD.</description><required>FALSE</required><title>Date Issued</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>element</type><prefix>NULL</prefix><value>dateIssued</value></create><read><path>mods:dateIssued</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties><children/></element><element name="publisher"><properties><type>textfield</type><access>TRUE</access><required>FALSE</required><title>Publisher</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>element</type><prefix>NULL</prefix><value>publisher</value></create><read><path>mods:publisher</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties><children/></element><element name="country"><properties><type>textfield</type><access>TRUE</access><required>FALSE</required><title>Country</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>xml</type><prefix>NULL</prefix><value>&lt;place&gt;&lt;placeTerm authority='marccountry'
-                                        type='code'&gt;%value%&lt;/placeTerm&gt;&lt;/place&gt;</value></create><read><path>mods:place/mods:placeTerm[@type = 'code']</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties><children/></element><element name="place"><properties><type>textfield</type><access>TRUE</access><required>FALSE</required><title>Place</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>xml</type><prefix>NULL</prefix><value>&lt;place&gt;&lt;placeTerm
-                                        type="text"&gt;%value%&lt;/placeTerm&gt;&lt;/place&gt;</value></create><read><path>mods:place/mods:placeTerm[@type = 'text']</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties><children/></element></children></element><element name="isbn"><properties><type>textfield</type><access>TRUE</access><required>FALSE</required><title>ISBN</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>element</type><prefix>NULL</prefix><value>identifier</value></create><read><path>mods:identifier</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties><children/></element><element name="physicalDescription"><properties><type>fieldset</type><access>TRUE</access><required>FALSE</required><title>Physical Description</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>element</type><prefix>NULL</prefix><value>physicalDescription</value></create><read><path>mods:physicalDescription</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties><children><element name="form"><properties><type>select</type><access>TRUE</access><default_value>nonprojected graphic</default_value><description>A designation of a particular physical presentation of a
-                                resource, including the physical form or medium of material for a
-                                resource.</description><options><videorecording>videorecording</videorecording><unspecified>unspecified</unspecified><text>text</text><index key="tactile material">tactile material</index><index key="sound recording">sound recording</index><index key="remote-sensing image">remote-sensing image</index><index key="projected graphic">projected graphic</index><index key="notated music">notated music</index><index key="nonprojected graphic">nonprojected graphic</index><index key="motion picture">motion picture</index><microform>microform</microform><map>map</map><kit>kit</kit><globe>globe</globe><index key="electronic resource">electronic resource</index></options><required>FALSE</required><title>Form</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>xml</type><prefix>NULL</prefix><value>&lt;form
-                                        authority="marcform"&gt;%value%&lt;/form&gt;</value></create><read><path>mods:form</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties><children/></element><element name="extent"><properties><type>textfield</type><access>TRUE</access><required>FALSE</required><title>Extent</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>element</type><prefix>NULL</prefix><value>extent</value></create><read><path>mods:extent</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties><children/></element></children></element><element name="note"><properties><type>textarea</type><access>TRUE</access><required>FALSE</required><title>Note</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>element</type><prefix>NULL</prefix><value>note</value></create><read><path>mods:note[not(@*)]</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties><children/></element><element name="subject"><properties><type>fieldset</type><access>TRUE</access><required>FALSE</required><title>Subject</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>element</type><prefix>NULL</prefix><value>subject</value></create><read><path>mods:subject</path><context>parent</context></read><update>NULL</update><delete>NULL</delete></actions></properties><children><element name="topic"><properties><type>tags</type><access>TRUE</access><required>FALSE</required><title>Topic</title><tree>TRUE</tree></properties><children><element name="0"><properties><type>tag</type><access>TRUE</access><required>FALSE</required><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>element</type><prefix>NULL</prefix><value>topic</value></create><read><path>mods:topic</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete><path>self::node()</path><context>self</context></delete></actions></properties><children/></element></children></element><element name="geographic"><properties><type>tags</type><access>TRUE</access><required>FALSE</required><title>Geographic</title><tree>TRUE</tree></properties><children><element name="0"><properties><type>tag</type><access>TRUE</access><required>FALSE</required><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>element</type><prefix>NULL</prefix><value>geographic</value></create><read><path>mods:geographic</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete><path>self::node()</path><context>self</context></delete></actions></properties><children/></element></children></element><element name="temporal"><properties><type>tags</type><access>TRUE</access><required>FALSE</required><title>Temporal</title><tree>TRUE</tree></properties><children><element name="0"><properties><type>tag</type><access>TRUE</access><required>FALSE</required><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>element</type><prefix>NULL</prefix><value>temporal</value></create><read><path>mods:temporal</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete><path>self::node()</path><context>self</context></delete></actions></properties><children/></element></children></element><element name="hierarchicalGeographic"><properties><type>fieldset</type><access>TRUE</access><required>FALSE</required><title>Geographic Information</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>element</type><prefix>NULL</prefix><value>hierarchicalGeographic</value></create><read><path>mods:hierarchicalGeographic</path><context>parent</context></read><update>NULL</update><delete>NULL</delete></actions></properties><children><element name="continent"><properties><type>select</type><access>TRUE</access><options><Asia>Asia</Asia><Africa>Africa</Africa><Europe>Europe</Europe><index key="North America">North America</index><index key="South America">South America</index></options><required>FALSE</required><title>Continent</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>element</type><prefix>NULL</prefix><value>continent</value></create><read><path>mods:continent</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties><children/></element><element name="country"><properties><type>textfield</type><access>TRUE</access><description>Name of a country, i.e. a political entity
-                                        considered a country.</description><required>FALSE</required><title>Country</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>element</type><prefix>NULL</prefix><value>country</value></create><read><path>mods:country</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties><children/></element><element name="province"><properties><type>textfield</type><access>TRUE</access><description>Includes first order political divisions called
-                                        provinces within a country, e.g. in Canada.</description><required>FALSE</required><title>Province</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>element</type><prefix>NULL</prefix><value>province</value></create><read><path>mods:province</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties><children/></element><element name="region"><properties><type>textfield</type><access>TRUE</access><description>Includes regions that have status as a
-                                        jurisdiction, usually incorporating more than one first
-                                        level jurisdiction.</description><required>FALSE</required><title>Region</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>element</type><prefix>NULL</prefix><value>region</value></create><read><path>mods:region</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties><children/></element><element name="county"><properties><type>textfield</type><access>TRUE</access><description>Name of the largest local administrative unit in
-                                        various countries, e.g. England.</description><required>FALSE</required><title>County</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>element</type><prefix>NULL</prefix><value>county</value></create><read><path>mods:county</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties><children/></element><element name="city"><properties><type>textfield</type><access>TRUE</access><description>Name of an inhabited place incorporated as a city,
-                                        town, etc.</description><required>FALSE</required><title>City</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>element</type><prefix>NULL</prefix><value>city</value></create><read><path>mods:city</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties><children/></element><element name="citySection"><properties><type>textfield</type><access>TRUE</access><description>Name of a smaller unit within a populated place,
-                                        e.g., neighborhoods, parks, or streets.</description><required>FALSE</required><title>City Section</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>element</type><prefix>NULL</prefix><value>citySection</value></create><read><path>mods:citySection</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties><children/></element></children></element><element name="cartographics"><properties><type>fieldset</type><access>TRUE</access><required>FALSE</required><title>Cartographics</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>element</type><prefix>NULL</prefix><value>cartographics</value></create><read><path>mods:cartographics</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties><children><element name="coordinates"><properties><type>textfield</type><access>TRUE</access><description>Contains a statement of coordinates covered by the
-                                        resource.</description><required>FALSE</required><title>Coordinates</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>element</type><prefix>NULL</prefix><value>coordinates</value></create><read><path>mods:coordinates</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties><children/></element></children></element></children></element></children></form></definition>
+				<update>
+					<path>self::node()</path>
+					<context>self</context></update>
+				<delete>
+					<path>self::node()</path>
+					<context>self</context></delete></actions></properties>
+		<children>
+			<element name="entry_auth_name">
+				<properties>
+					<type>textfield</type>
+					<access>TRUE</access>
+					<required>FALSE</required>
+					<title>Name</title>
+					<tree>TRUE</tree>
+					<actions>
+						<create>
+							<path>self::node()</path>
+							<context>parent</context>
+							<schema></schema>
+							<type>element</type>
+							<prefix>NULL</prefix>
+							<value>namePart</value></create>
+						<read>
+							<path>mods:namePart</path>
+							<context>parent</context></read>
+						<update>
+							<path>self::node()</path>
+							<context>self</context></update>
+						<delete>
+							<path>self::node()</path>
+							<context>self</context></delete></actions></properties></element>
+			<element name="entry_auth_role">
+				<properties>
+					<type>textfield</type>
+					<access>TRUE</access>
+					<required>FALSE</required>
+					<title>Role</title>
+					<tree>TRUE</tree>
+					<actions>
+						<create>
+							<path>self::node()</path>
+							<context>parent</context>
+							<schema></schema>
+							<type>xml</type>
+							<prefix>NULL</prefix>
+							<value>&lt;role&gt;&lt;roleTerm&gt;%value%&lt;/roleTerm&gt;&lt;/role&gt;</value></create>
+						<read>
+							<path>mods:role/mods:roleTerm</path>
+							<context>parent</context></read>
+						<update>
+							<path>self:node()</path>
+							<context>self</context></update>
+						<delete>
+							<path>self:node()</path>
+							<context>self</context></delete></actions></properties></element></children></element>
+	<element name="url">
+		<properties>
+			<type>textfield</type>
+			<access>TRUE</access>
+			<required>FALSE</required>
+			<title>URL</title>
+			<tree>TRUE</tree>
+			<actions>
+				<create>
+					<path>self::node()</path>
+					<context>parent</context>
+					<schema></schema>
+					<type>element</type>
+					<prefix>NULL</prefix>
+					<value>url</value></create>
+				<read>
+					<path>mods:url</path>
+					<context>parent</context></read>
+				<update>
+					<path>self::node()</path>
+					<context>self</context></update>
+				<delete>
+					<path>self::node()</path>
+					<context>self</context></delete></actions></properties></element><element name="isbn"><properties><type>textfield</type><access>TRUE</access><required>FALSE</required><title>ISBN</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema /><type>element</type><prefix>NULL</prefix><value>identifier</value></create><read><path>mods:identifier</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties><children /></element>
+	<element name="translator">
+		<properties>
+			<type>textfield</type>
+			<access>TRUE</access>
+			<required>FALSE</required>
+			<title>Translator</title>
+			<tree>TRUE</tree>
+			<actions>
+				<create>
+					<path>self::node()</path>
+					<context>parent</context>
+					<schema></schema>
+					<type>xml</type>
+					<prefix>NULL</prefix>
+					<value>&lt;name&gt;&lt;namePart&gt;%value%&lt;/namePart&gt;&lt;role&gt;&lt;roleTerm&gt;translator&lt;/roleTerm&gt;&lt;/role&gt;&lt;/name&gt;</value></create>
+				<read>
+					<path>mods:name/mods:namePart</path>
+					<context>parent</context></read>
+				<update>
+					<path>self::node()</path>
+					<context>self</context></update>
+				<delete>
+					<path>self::node()</path>
+					<context>self</context></delete></actions></properties>
+		</element>
+	<element name="license">
+		<properties>
+			<type>textfield</type>
+			<access>TRUE</access>
+			<required>FALSE</required>
+			<title>License</title><tree>TRUE</tree>
+			<actions>
+				<create>
+					<path>self::node()</path>
+					<context>parent</context>
+					<schema></schema>
+					<type>xml</type>
+					<prefix>NULL</prefix>
+					<value>&lt;detail type="licence"&gt;&lt;number&gt;%value%&lt;/number&gt;&lt;/detail&gt;</value></create>
+				<read>
+					<path>mods:detail/mods:number</path>
+					<context>parent</context></read>
+				<update>
+					<path>self::node()</path>
+					<context>self</context></update>
+				<delete>
+					<path>self::node()</path>
+					<context>self</context></delete></actions></properties></element>
+	<element name="date_revised">
+		<properties>
+			<type>textfield</type>
+			<access>TRUE</access>
+			<required>FALSE</required>
+			<title>Date of revision</title>
+			<tree>TRUE</tree>
+			<actions>
+				<create>
+					<path>self::node()</path>
+					<context>parent</context>
+					<schema></schema>
+					<type>element</type>
+					<prefix>NULL</prefix>
+					<value>dateModified</value></create>
+				<read>
+					<path>mods:dateModified</path>
+					<context>parent</context></read>
+				<update>
+					<path>self::node()</path>
+					<context>self</context></update>
+				<delete>
+					<path>self::node()</path>
+					<context>self</context></delete></actions></properties></element></children></form></definition>
