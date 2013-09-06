@@ -260,16 +260,15 @@ function islandora_adelta_islandora_xml_form_builder_forms() {
 
 /**
  * Implements hook_islandora_ingest_steps().
- *
-function islandora_basic_image_islandora_sp_basic_image_islandora_ingest_steps() {
+ */
+function islandora_adelta_islandora_sp_adelta_islandora_ingest_steps() {
   return array(
     'islandora_basic_image' => array(
       'weight' => 10,
       'type' => 'form',
-      'form_id' => 'islandora_basic_image_image_upload_form',
-      'module' => 'islandora_basic_image',
+      'form_id' => 'islandora_adelta_image_upload_form',
+      'module' => 'islandora_adelta',
       'file' => 'includes/image_upload.form.inc',
     ),
   );
 }
-*/
