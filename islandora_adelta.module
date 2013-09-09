@@ -163,12 +163,12 @@ function islandora_adelta_islandora_sp_adelta_islandora_view_object($object, $pa
 
 /**
  * Implements hook_CMODEL_PID_islandora_object_ingested().
- *
-function islandora_basic_image_islandora_sp_basic_image_islandora_object_ingested($object) {
-  module_load_include('inc', 'islandora_basic_image', 'includes/derivatives');
-  islandora_basic_image_create_all_derivatives($object);
+ */
+function islandora_adelta_islandora_sp_adelta_islandora_object_ingested($object) {
+  module_load_include('inc', 'islandora_adelta', 'includes/derivatives');
+  islandora_adelta_create_all_derivatives($object);
 }
-*/
+
 
 /**
  * Implements hook_preprocess_theme().

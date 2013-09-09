@@ -11,7 +11,7 @@
  * @param FedoraObject $object
  *   The object to add derivatives to.
  */
-function islandora_basic_image_create_all_derivatives(FedoraObject $object) {
+function islandora_adelta_create_all_derivatives(FedoraObject $object) {
   $mime_detect = new MimeDetect();
   if (!isset($object['OBJ'])) {
     drupal_set_message(t('Could not create image derivatives for %s.  No image file was uploaded.', array('%s' => $object->id)), 'error');
@@ -32,12 +32,12 @@ function islandora_basic_image_create_all_derivatives(FedoraObject $object) {
   $original_file = file_save($file);
 
   $tn_file = file_copy($original_file, 'temporary://' . $file_name . 'TN.' . $ext);
-  if (islandora_basic_image_scale_image($tn_file, 200, 200)) {
-    islandora_basic_image_add_datastream($object, 'TN', $tn_file);
+  if (islandora_adelta_scale_image($tn_file, 200, 200)) {
+    islandora_adelta_add_datastream($object, 'TN', $tn_file);
   }
   $medium_file = file_copy($original_file, 'temporary://' . $file_name . 'MEDIUM.' . $ext);
-  if (islandora_basic_image_scale_image($medium_file, 500, 700)) {
-    islandora_basic_image_add_datastream($object, 'MEDIUM_SIZE', $medium_file);
+  if (islandora_adelta_scale_image($medium_file, 500, 700)) {
+    islandora_adelta_add_datastream($object, 'MEDIUM_SIZE', $medium_file);
   }
   file_delete($original_file);
 }
@@ -55,7 +55,7 @@ function islandora_basic_image_create_all_derivatives(FedoraObject $object) {
  * @return bool
  *   TRUE if successful, FALSE otherwise.
  */
-function islandora_basic_image_scale_image($file, $width, $height) {
+function islandora_adelta_scale_image($file, $width, $height) {
   $real_path = drupal_realpath($file->uri);
   $image = image_load($real_path);
   if (!empty($image)) {
@@ -77,7 +77,7 @@ function islandora_basic_image_scale_image($file, $width, $height) {
  * @param string $file
  *   The URI of the file to be added as the datastream content.
  */
-function islandora_basic_image_add_datastream(FedoraObject $object, $dsid, $file) {
+function islandora_adelta_add_datastream(FedoraObject $object, $dsid, $file) {
   try {
     $ds = $object->constructDatastream($dsid, 'M');
     $ds->label = $dsid;
