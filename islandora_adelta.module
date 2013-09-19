@@ -180,7 +180,6 @@ function islandora_adelta_preprocess_islandora_adelta(array &$variables) {
   $repository = $islandora_object->repository;
   module_load_include('inc', 'islandora', 'includes/datastream');
   module_load_include('inc', 'islandora', 'includes/utilities');
-  module_load_include('xsl','islandora_adelta', 'includes/adelta_mods_stylesheet');
 
   try {
     $dc = $islandora_object['DC']->content;
