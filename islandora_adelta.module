@@ -180,6 +180,7 @@ function islandora_adelta_preprocess_islandora_adelta(array &$variables) {
   $repository = $islandora_object->repository;
   module_load_include('inc', 'islandora', 'includes/datastream');
   module_load_include('inc', 'islandora', 'includes/utilities');
+  module_load_include('xsl','islandora_adelta', 'includes/adelta_mods_stylesheet');
 
   try {
     $dc = $islandora_object['DC']->content;
@@ -228,6 +229,17 @@ function islandora_adelta_preprocess_islandora_adelta(array &$variables) {
       $variables['islandora_content'] = $variables['islandora_medium_img'];
     }
   }
+  $module_path = drupal_get_path('module', 'islandora_adelta');
+  //Mods data
+  $mods_doc = new DomDocument();
+  $mods_doc->loadXML($islandora_object['MODS']->content);
+  
+  $mods_xsl = new DOMDocument();
+  $mods_xsl->load("$module_path/xsl/adelta_mods_stylesheet.xsl");
+  
+  $proc = new XSLTProcessor();
+  $proc->importStylesheet($mods_xsl);
+  $variables['mods'] = $proc->transformToXML($mods_doc);
 }
 
 /**

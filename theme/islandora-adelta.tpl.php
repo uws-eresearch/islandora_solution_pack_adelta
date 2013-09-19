@@ -16,10 +16,11 @@
       </div>
     <?php endif; ?>
   <div class="islandora-adelta-sidebar">
+  	<!-- <?php print $mods?> 
     <?php if (!empty($dc_array['dc:description']['value'])): ?>
       <h2><?php print $dc_array['dc:description']['label']; ?></h2>
-      <p><?php print $dc_array['dc:description']['value']; ?></p>
-    <?php endif; ?>
+      <p><?php print $dc_array['dc:description']['value']; ?></p> 
+    <?php endif; ?>-->
     <?php if ($parent_collections): ?>
       <div>
         <h2><?php print t('In collections'); ?></h2>
@@ -36,7 +37,7 @@
   <legend><span class="fieldset-legend"><?php print t('Details'); ?></span></legend>
     <div class="fieldset-wrapper">
       <dl class="islandora-inline-metadata islandora-adelta-fields">
-        <?php $row_field = 0; ?>
+        <!--<?php $row_field = 0; ?>
         <?php foreach($dc_array as $key => $value): ?>
           <dt class="<?php print $value['class']; ?><?php print $row_field == 0 ? ' first' : ''; ?>">
             <?php print $value['label']; ?>
@@ -45,7 +46,8 @@
             <?php print $value['value']; ?>
           </dd>
           <?php $row_field++; ?>
-        <?php endforeach; ?>
+        <?php endforeach; ?>-->
+        <?php print $mods?>
       </dl>
     </div>
   </fieldset>
