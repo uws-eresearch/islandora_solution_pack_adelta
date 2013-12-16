@@ -7,7 +7,7 @@
                                         Printmaker, etc.</description><required>FALSE</required><title>Role</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>xml</type><prefix>NULL</prefix><value>&lt;role&gt;&lt;roleTerm authority="marcrelator"
                                                 type="text"&gt;%value%&lt;/roleTerm&gt;&lt;/role&gt;</value></create><read><path>mods:role/mods:roleTerm</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete><path>self::node()</path><context>self</context></delete></actions></properties><children/></element></children></element></children></element><element name="identifier"><properties><type>textfield</type><access>TRUE</access><description>A unique identifying number for the creative work. Comment: First use what is in VIAF, and then create IDs as needed.</description><required>TRUE</required><title>Unique identification number</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>xml</type><prefix>NULL</prefix><value>&lt;identifier type="unique_id"&gt;%value%&lt;/identifier&gt;</value></create><read><path>mods:identifier[@type="unique_id"]</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete><path>self::node()</path>
 	<context>self</context></delete></actions></properties><children/></element>
-	<element name="description"><properties><type>textarea</type><access>TRUE</access><required>FALSE</required><title>Description</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema /><type>element</type><prefix>NULL</prefix><value>description</value></create><read><path>mods:description</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties><children /></element><element name="language"><properties><type>textfield</type><access>TRUE</access><description>Select a three letter iso639-2b language code from &lt;a
+	<element name="description"><properties><type>textarea</type><access>TRUE</access><required>FALSE</required><title>Description</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema /><type>element</type><prefix>NULL</prefix><value>abstract</value></create><read><path>mods:abstract</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties><children /></element><element name="language"><properties><type>textfield</type><access>TRUE</access><description>Select a three letter iso639-2b language code from &lt;a
                         href="http://www.loc.gov/standards/iso639-2/php/code_list.php"
                         target="_blank"&gt;http://www.loc.gov/standards/iso639-2/php/code_list.php&lt;/a&gt;</description><required>FALSE</required><title>Language</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema /><type>xml</type><prefix>NULL</prefix><value>&lt;language&gt;&lt;languageTerm authority="iso639-2b"
                                 type="code"&gt;%value%&lt;/languageTerm&gt;&lt;/language&gt;</value></create><read><path>mods:language/mods:languageTerm</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete><path>self::node()</path><context>self</context></delete></actions></properties></element><element name="date">
@@ -23,11 +23,11 @@
 					<path>self::node()</path>
 					<context>parent</context>
 					<schema></schema>
-					<type>element</type>
+					<type>xml</type>
 					<prefix>NULL</prefix>
-					<value>date</value></create>
+					<value>&lt;originInfo&gt;&lt;dateIssued&gt;%value%&lt;/dateIssued&gt;&lt;/originInfo&gt;</value></create>
 				<read>
-					<path>mods:date</path>
+					<path>mods:originInfo/mods:dateIssued</path>
 					<context>parent</context></read>
 				<update><path>self::node()</path>
 					<context>self</context></update>
@@ -46,15 +46,17 @@
 					<path>self::node()</path>
 					<context>parent</context>
 					<schema></schema>
-					<type>element</type>
-					<value>publisher</value></create>
+					<type>xml</type>
+					<value>&lt;originInfo&gt;&lt;publisher&gt;%value%&lt;/publisher&gt;&lt;/originInfo&gt;</value></create>
 				<read>
-					<path>mods:publisher</path>
+					<path>mods:originInfo/mods:publisher</path>
 					<context>parent</context></read>
 				<update>
 					<path>self::node()</path>
 					<context>self</context></update>
-				<delete></delete></actions></properties></element>
+				<delete>
+					<path>self::node()</path>
+					<context>self</context></delete></actions></properties></element>
 	<element name="medium">
 		<properties>
 			<type>textfield</type>
@@ -67,10 +69,10 @@
 					<path>self::node()</path>
 					<context>parent</context>
 					<schema></schema>
-					<type>element</type>
-					<value>internetMediaType</value></create>
+					<type>xml</type>
+					<value>&lt;physicalDescription&gt;&lt;internetMediaType&gt;%value%&lt;/internetMediaType&gt;&lt;/physicalDescription&gt;</value></create>
 				<read>
-					<path>mods:internetMediaType</path>
+					<path>mods:physicalDescription/mods:internetMediaType</path>
 					<context>parent</context></read>
 				<update>
 					<path>self::node()</path>
@@ -114,18 +116,19 @@
 					<path>self::node()</path>
 					<context>parent</context>
 					<schema></schema>
-					<type>element</type>
+					<type>xml</type>
 					<prefix>NULL</prefix>
-					<value>url</value></create>
+					<value>&lt;location&gt;&lt;url&gt;%value%&lt;/url&gt;&lt;/location&gt;</value></create>
 				<read>
-					<path>mods:url</path>
+					<path>mods:location/mods:url</path>
 					<context>parent</context></read>
 				<update>
 					<path>self::node()</path>
 					<context>self</context></update>
 				<delete>
 					<path>self::node()</path>
-					<context>self</context></delete></actions></properties></element><element name="isbn"><properties><type>textfield</type><access>TRUE</access><required>FALSE</required><title>ISBN</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema /><type>xml</type><prefix>NULL</prefix><value>&lt;identifier type="isbn"&gt;%value%&lt;/identifier&gt;</value></create><read><path>mods:identifier[@type="isbn"]</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties><children /></element>
+					<context>self</context></delete></actions></properties></element><element name="isbn"><properties><type>textfield</type><access>TRUE</access><required>FALSE</required><title>ISBN</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema /><type>xml</type><prefix>NULL</prefix><value>&lt;identifier type="isbn"&gt;%value%&lt;/identifier&gt;</value></create><read><path>mods:identifier[@type="isbn"]</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete><path>self::node()</path>
+	<context>self</context></delete></actions></properties><children /></element>
 	<element name="translator">
 		<properties>
 			<type>textfield</type>
@@ -164,9 +167,9 @@
 					<schema></schema>
 					<type>xml</type>
 					<prefix>NULL</prefix>
-					<value>&lt;detail type="licence"&gt;&lt;number&gt;%value%&lt;/number&gt;&lt;/detail&gt;</value></create>
+					<value>&lt;note type="licence"&gt;%value%&lt;/note&gt;</value></create>
 				<read>
-					<path>mods:detail/mods:number</path>
+					<path>mods:note[@type="licence"]</path>
 					<context>parent</context></read>
 				<update>
 					<path>self::node()</path>
@@ -186,11 +189,11 @@
 					<path>self::node()</path>
 					<context>parent</context>
 					<schema></schema>
-					<type>element</type>
+					<type>xml</type>
 					<prefix>NULL</prefix>
-					<value>dateModified</value></create>
+					<value>&lt;originInfo&gt;&lt;dateOther type="entry_revision"&gt;%value%&lt;/dateOther&gt;&lt;/originInfo&gt;</value></create>
 				<read>
-					<path>mods:dateModified</path>
+					<path>mods:originInfo/mods:dateOther[@type="entry_revision"]</path>
 					<context>parent</context></read>
 				<update>
 					<path>self::node()</path>
