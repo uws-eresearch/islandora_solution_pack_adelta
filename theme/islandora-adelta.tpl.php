@@ -33,7 +33,7 @@
     <?php endif; ?>
   </div>
   </div>
-  <fieldset class="collapsible collapsed islandora-adelta-metadata">
+  <fieldset class="collapsible islandora-adelta-metadata">
   <legend><span class="fieldset-legend"><?php print t('Details'); ?></span></legend>
     <div class="fieldset-wrapper">
       <dl class="islandora-inline-metadata islandora-adelta-fields">
