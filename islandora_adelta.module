@@ -41,6 +41,13 @@ function islandora_adelta_menu() {
   'access callback' => 'islandora_basic_image_access',
   'access arguments' => array(2),
   ); */
+  $items['islandora_adelta/adelta-search-autocomplete'] = array(
+  		'description' => 'A callback for our search autocomplete.',
+  		'file' => 'includes/search.autocomplete.inc',
+  		'page callback' => 'islandora_search_autocomplete',
+  		'access arguments' => array('administer site configuration'),
+  		'type' => MENU_CALLBACK,
+  );
   return $items;
 }
 
@@ -264,7 +271,7 @@ function islandora_adelta_islandora_xml_form_builder_forms() {
   $module_path = drupal_get_path('module', 'islandora_adelta');
   return array(
     'ADELTA MODS form' => array(
-      'form_file' => "$module_path/xml/islandora_adelta_form_mods.xml",
+      'form_file' => "$module_path/xml/islandora_adelta_mods_form.xml",
     ),
   );
 }
