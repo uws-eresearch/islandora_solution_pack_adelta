@@ -22,6 +22,9 @@ function islandora_search_autocomplete($string) {
 		$given_name = trim($all_data['Given_Name'][0]);
 		$family_name = trim($all_data['Family_Name'][0]);
 		$email = trim($all_data['Email'][0]);
+		$uri = trim($all_data['URI'][0]);
+		$personal_uri = trim($all_data['Personal_uri'][0]);
+		$dc_identifier = $metadata_array['dc:identifier'];
 		$full_name = "";
 		if ($honorific)
 			$full_name = $full_name.$honorific.' ';
@@ -32,7 +35,17 @@ function islandora_search_autocomplete($string) {
 		if ($email)
 			$full_name = $full_name.' '.$email;
 		
-		$matches[$full_name] = $full_name;
+		$key = "";
+		if($uri){
+			$key = $full_name.' <'.$uri.'>';
+		}
+		elseif($personal_uri){
+			$key = $full_name.' <'.$personal_uri.'>';
+		}
+		else 
+			$key = $full_name.' <'.$dc_identifier.'>';
+		
+		$matches[$key] = $full_name;
 	}
 	
 	drupal_json_output($matches);
