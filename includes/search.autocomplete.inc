@@ -3,6 +3,8 @@
  * Menu callback; Retrieve a JSON object containing autocomplete suggestion for search.
  */
 function islandora_search_autocomplete($string) {
+	//$module_path = drupal_get_path('module', 'islandora_adelta');
+	//drupal_add_js($module_path . '/js/test_me.js');
 	$matches = array();
 	/*$people = variable_get('input_search_people', array());
 	 foreach($people as $phrase){
@@ -15,8 +17,11 @@ function islandora_search_autocomplete($string) {
 	foreach($results as $person){
 		//$result_metadata = $person->result-metadata;
 		//$data = json_encode($person);
+		$match = array();
+		
 		$metadata_array = json_decode(json_encode($person), true);
 		$all_data = $metadata_array['result-metadata']['all'];
+		
 		$id = $all_data['id'];
 		$honorific = trim($all_data['Honorific'][0]);
 		$given_name = trim($all_data['Given_Name'][0]);
@@ -32,20 +37,27 @@ function islandora_search_autocomplete($string) {
 			$full_name = $full_name.$given_name.' ';
 		if ($family_name)
 			$full_name = $full_name.$family_name;
-		if ($email)
-			$full_name = $full_name.' '.$email;
+		/*if ($email)
+			$full_name = $full_name.' '.$email;*/
+		
+		$match['name'] = $full_name;
 		
 		$key = "";
 		if($uri){
-			$key = $full_name.' <'.$uri.'>';
+			$match['uri'] = $uri;
+			//$key = $full_name.' <'.$uri.'>';
 		}
 		elseif($personal_uri){
-			$key = $full_name.' <'.$personal_uri.'>';
+			$match['uri'] = $personal_uri;
+			//$key = $full_name.' <'.$personal_uri.'>';
 		}
 		else 
-			$key = $full_name.' <'.$dc_identifier.'>';
+			$match['uri'] = $dc_identifier;
+			//$key = $full_name.' <'.$dc_identifier.'>';
 		
-		$matches[$key] = $full_name;
+		//$matches[$key] = $full_name; //this can be an array
+		
+		array_push($matches, $match);
 	}
 	
 	drupal_json_output($matches);
