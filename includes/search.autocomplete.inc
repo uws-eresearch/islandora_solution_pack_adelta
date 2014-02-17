@@ -43,6 +43,7 @@ function islandora_search_autocomplete($string) {
 		$match['name'] = $full_name;
 		
 		$key = "";
+		$uri_pattern = "/^http:\/\//";
 		if($uri){
 			$match['uri'] = $uri;
 			//$key = $full_name.' <'.$uri.'>';
@@ -54,6 +55,10 @@ function islandora_search_autocomplete($string) {
 		else 
 			$match['uri'] = $dc_identifier;
 			//$key = $full_name.' <'.$dc_identifier.'>';
+			
+		if(!preg_match($uri_pattern, $match['uri'])){
+			$match['uri'] = "http://".$match['uri'];
+		}
 		
 		//$matches[$key] = $full_name; //this can be an array
 		

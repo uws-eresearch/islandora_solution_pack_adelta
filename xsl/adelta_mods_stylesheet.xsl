@@ -15,7 +15,9 @@ xmlns:mods="http://www.loc.gov/mods/v3">
 		<dt class="title first">Title</dt>
 		<dd class="title first"><xsl:value-of select="mods:titleInfo/mods:title"></xsl:value-of></dd>
 		<dt class="author">Author</dt>
-		<dd class="author"><xsl:value-of select="mods:name/mods:namePart[following-sibling::mods:role/mods:roleTerm='Author']"></xsl:value-of></dd>
+		<dd class="author" property="http://schema.org/author">
+		<a><xsl:attribute name="href"><xsl:value-of select="mods:name[mods:role/mods:roleTerm='Author']/@uri"/></xsl:attribute>
+		<xsl:value-of select="mods:name/mods:namePart[following-sibling::mods:role/mods:roleTerm='Author']"></xsl:value-of></a></dd>
 		<dt class="unique_id">Unique id</dt>
 		<dd class="unique_id"><xsl:value-of select="mods:identifier[@type='unique_id']"></xsl:value-of></dd>
 		<dt class="description">Description</dt>
