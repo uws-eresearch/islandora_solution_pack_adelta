@@ -88,8 +88,76 @@
 					<context>self</context></delete></actions></properties></element>
 	<element name="medium">
 		<properties>
-			<type>textfield</type>
+			<type>select</type>
 			<access>TRUE</access>
+			<options>
+				<ableton_live>Ableton Live</ableton_live>
+				<action_script>Action Script</action_script>
+				<activex>ActiveX</activex>
+				<adobe_acrobat_reader>Adobe Acrobat Reader</adobe_acrobat_reader>
+				<adobe_flash>Adobe Flash</adobe_flash>
+				<adobe_flex_3>Adobe Flex 3</adobe_flex_3>
+				<adobe_shockwave_player>Adobe Shockwave Player</adobe_shockwave_player>
+				<ajax>Ajax</ajax>
+				<analytic_tool>analytic tool</analytic_tool>
+				<android>Android</android>
+				<apache>Apache</apache>
+				<applescript>AppleScript</applescript>
+				<applesoft_BASIC>Applesoft BASIC</applesoft_BASIC>
+				<applet_java>Applet Java</applet_java>
+				<arduino>Arduino</arduino>
+				<asp>Asp</asp>
+				<box2D>Box2D</box2D>
+				<CAVE_writing_text_editor>CAVE writing text editor</CAVE_writing_text_editor>
+				<code_QR>Code QR</code_QR>
+				<ColdFusion_markup_language_CFML>ColdFusion Markup Language (CFML)</ColdFusion_markup_language_CFML>
+				<coppercube_3>Coppercube 3</coppercube_3>
+				<cortona>Cortona</cortona>
+				<cosmo_player>Cosmo player</cosmo_player>
+				<cult3D_plugin>Cult3D plugin</cult3D_plugin>
+				<dbCinema>dbCinema</dbCinema>
+				<delimited_text>Delimited text</delimited_text>
+				<dhtml>DHTML</dhtml>
+				<director>Director</director>
+				<DivX_codec>DivX Codec</DivX_codec><DjVu_plugin>DjVu Plugin</DjVu_plugin><dotclear>DotClear</dotclear>
+				<dreamweaver>Dreamweaver</dreamweaver>
+				<epoly>EPoly</epoly><fips_181>
+					FIPS 181
+					</fips_181><five3D>Five3D</five3D>
+				<flixel>Flixel</flixel>
+				<flixel_library>Flixel Library</flixel_library>
+				<flux_player>Flux Player</flux_player>
+				<g2_player>G2 Player</g2_player>
+				<gifbuilder>Gifbuilder</gifbuilder><glulx>
+					Glulx
+					</glulx>
+				<GM_terrain_editor_2>GM Terrain Editor 2</GM_terrain_editor_2>
+				<google_docs>Google Docs</google_docs>
+				<google_earth>google earth</google_earth>
+				<google_maps>Google Maps</google_maps>
+				<google_street_view>Google Street View</google_street_view>
+				<homeSite_4.0>HomeSite 4.0</homeSite_4.0>
+				<HTF_Hyper_Trance_fiction>HTF (Hyper Trance Fiction)</HTF_Hyper_Trance_fiction>
+				<hypercard>HyperCard</hypercard>
+				<hypergate>Hypergate</hypergate>
+				<Illustrator_8.0_goldwave_hammerhead>Illustrator 8.0 GoldWave HammerHead</Illustrator_8.0_goldwave_hammerhead>
+				<indexhibit>Indexhibit</indexhibit>
+				<infoduct>infoduct</infoduct>
+				<inform_6>Inform 6</inform_6>
+				<iTunes>iTunes</iTunes>
+				<janusNode>JanusNode</janusNode>
+				<javascript>Javascript</javascript>
+				<joystick>Joystick</joystick>
+				<jQuery>jQuery</jQuery>
+				<json>JSON</json>
+				<jw_player>JW Player</jw_player>
+				<mediawiki>MediaWiki</mediawiki>
+				<mediawiki_api>MediaWiki API</mediawiki_api>
+				<microsoft_silverlight>Microsoft Silverlight</microsoft_silverlight>
+				<minecraft>Minecraft</minecraft>
+				<mud>MUD</mud>
+				
+			</options>
 			<required>FALSE</required>
 			<title>Medium/Platform</title>
 			<tree>TRUE</tree>
