@@ -35,7 +35,8 @@
   </div>
   <fieldset class="collapsible islandora-adelta-metadata">
   <legend><span class="fieldset-legend"><?php print t('Details'); ?></span></legend>
-    <section resource="creative work" typeof="http://schema.org/CreativeWork" class="fieldset-wrapper">
+    <section xmlns:dc="http://purl.org/dc/elements/1.1/"
+about="http://www.example.com/books/wikinomics" class="fieldset-wrapper">
       <dl class="islandora-inline-metadata islandora-adelta-fields">
         <!--<?php $row_field = 0; ?>
         <?php foreach($dc_array as $key => $value): ?>

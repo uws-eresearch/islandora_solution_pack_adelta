@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-xmlns:mods="http://www.loc.gov/mods/v3">
+xmlns:mods="http://www.loc.gov/mods/v3" exclude-result-prefixes="mods">
 
 <xsl:variable name="lowerCase" select="'abcdefghijklmnopqrstuvwxyz'"/>
 <xsl:variable name="upperCase" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
@@ -15,9 +15,13 @@ xmlns:mods="http://www.loc.gov/mods/v3">
 		<dt class="title first">Title</dt>
 		<dd class="title first"><xsl:value-of select="mods:titleInfo/mods:title"></xsl:value-of></dd>
 		<dt class="author">Author</dt>
-		<dd class="author" property="http://schema.org/author">
-		<a><xsl:attribute name="href"><xsl:value-of select="mods:name[mods:role/mods:roleTerm='Author']/@uri"/></xsl:attribute>
-		<xsl:value-of select="mods:name/mods:namePart[following-sibling::mods:role/mods:roleTerm='Author']"></xsl:value-of></a></dd>
+		<dd class="author">
+		<span property="dc:creator">
+		<xsl:attribute name="href"><xsl:value-of select="mods:name[mods:role/mods:roleTerm='Author']/@uri"/></xsl:attribute></span>
+		<span vocab="http://xmlns.com/foaf/0.1/" typeof="Person">
+		<xsl:attribute name="about"><xsl:value-of select="mods:name[mods:role/mods:roleTerm='Author']/@uri"/></xsl:attribute>
+    	<span property="name"><xsl:value-of select="mods:name/mods:namePart[following-sibling::mods:role/mods:roleTerm='Author']"></xsl:value-of></span></span>
+		</dd>
 		<dt class="unique_id">Unique id</dt>
 		<dd class="unique_id"><xsl:value-of select="mods:identifier[@type='unique_id']"></xsl:value-of></dd>
 		<dt class="description">Description</dt>
