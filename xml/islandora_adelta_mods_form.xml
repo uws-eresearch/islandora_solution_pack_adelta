@@ -33,7 +33,7 @@
                                         http://id.loc.gov/vocabulary/relators.html - e.g. Artist,
                                         Creator, Designer, Engraver, Illustrator, Photographer,
                                         Printmaker, etc.</description><required>FALSE</required><title>Role</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>xml</type><prefix>NULL</prefix><value>&lt;role&gt;&lt;roleTerm authority="marcrelator"
-                                                type="text"&gt;%value%&lt;/roleTerm&gt;&lt;/role&gt;</value></create><read><path>mods:role/mods:roleTerm</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete><path>self::node()</path><context>self</context></delete></actions></properties><children/></element></children></element></children></element><element name="identifier"><properties><type>textfield</type><access>TRUE</access><description>A unique identifying number for the creative work. Comment: First use what is in VIAF, and then create IDs as needed.</description><required>TRUE</required><title>Unique identification number</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>xml</type><prefix>NULL</prefix><value>&lt;identifier type="unique_id"&gt;%value%&lt;/identifier&gt;</value></create><read><path>mods:identifier[@type="unique_id"]</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete><path>self::node()</path>
+                                                type="text"&gt;%value%&lt;/roleTerm&gt;&lt;/role&gt;</value></create><read><path>mods:role/mods:roleTerm</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete><path>self::node()</path><context>self</context></delete></actions></properties><children/></element></children></element></children></element><element name="identifier"><properties><type>hidden</type><access>TRUE</access><description>A unique identifying number for the creative work. Comment: First use what is in VIAF, and then create IDs as needed.</description><required>FALSE</required><title>Unique identification number</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>xml</type><prefix>NULL</prefix><value>&lt;identifier type="unique_id"&gt;%value%&lt;/identifier&gt;</value></create><read><path>mods:identifier[@type="unique_id"]</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete><path>self::node()</path>
 	<context>self</context></delete></actions></properties><children/></element>
 	<element name="description"><properties><type>textarea</type><access>TRUE</access><required>FALSE</required><title>Description</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema /><type>element</type><prefix>NULL</prefix><value>abstract</value></create><read><path>mods:abstract</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties><children /></element><element name="language"><properties><type>textfield</type><access>TRUE</access><description>Select a three letter iso639-2b language code from &lt;a
                         href="http://www.loc.gov/standards/iso639-2/php/code_list.php"
@@ -156,7 +156,31 @@
 				<microsoft_silverlight>Microsoft Silverlight</microsoft_silverlight>
 				<minecraft>Minecraft</minecraft>
 				<mud>MUD</mud>
-				
+				<mysql_5.0>MySQL 5.0</mysql_5.0>
+				<node.js>Node.js</node.js>
+				<ogg>Ogg</ogg>
+				<opengL>OpenGL</opengL>
+				<outlook>Outlook</outlook>
+				<palm>Palm</palm>
+				<palm_pilot>Palm Pilot</palm_pilot>
+				<perl>Perl</perl>
+				<php>PHP</php>
+				<pinterest>Pinterest</pinterest>
+				<poser_7>Poser 7</poser_7>
+				<preview>Preview</preview>
+				<prezi>Prezi</prezi>
+				<processing>Processing</processing>
+				<progression_4>Progression 4</progression_4>
+				<python>Python</python>
+				<real_audio>Real audio</real_audio>
+				<realOne_player>RealOne Player</realOne_player>
+				<realplayer>Realplayer</realplayer>
+				<ren_py>Ren'Py</ren_py>
+				<rita>RiTa</rita>
+				<scansoft>ScanSoft</scansoft>
+				<shell_script>Shell script</shell_script>
+				<skype>Skype</skype>
+
 			</options>
 			<required>FALSE</required>
 			<title>Medium/Platform</title>

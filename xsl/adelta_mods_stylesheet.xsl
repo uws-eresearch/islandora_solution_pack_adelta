@@ -23,7 +23,7 @@ xmlns:mods="http://www.loc.gov/mods/v3" exclude-result-prefixes="mods">
     	<span property="name"><xsl:value-of select="mods:name/mods:namePart[following-sibling::mods:role/mods:roleTerm='Author']"></xsl:value-of></span></span>
 		</dd>
 		<dt class="unique_id">Unique id</dt>
-		<dd class="unique_id"><xsl:value-of select="mods:identifier[@type='unique_id']"></xsl:value-of></dd>
+		<dd class="unique_id">{{unique_id}}</dd>
 		<dt class="description">Description</dt>
 		<dd class="description"><xsl:value-of select="mods:abstract"></xsl:value-of></dd>
 		<dt class="language">Language</dt>
