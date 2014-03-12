@@ -46,8 +46,10 @@ xmlns:mods="http://www.loc.gov/mods/v3" exclude-result-prefixes="mods">
 			<dt class="isbn">ISBN</dt>
 			<dd class="isbn"><xsl:value-of select="mods:identifier[@type='isbn']"></xsl:value-of></dd>
 		</xsl:if>
-		<dt class="translator">Translator</dt>
-		<dd class="translator"><xsl:value-of select="mods:name/mods:namePart[following-sibling::mods:role/mods:roleTerm='translator']"></xsl:value-of></dd>
+		<xsl:if test="not(mods:name/mods:namePart[following-sibling::mods:role/mods:roleTerm='translator']='')">
+			<dt class="translator">Translator</dt>
+			<dd class="translator"><xsl:value-of select="mods:name/mods:namePart[following-sibling::mods:role/mods:roleTerm='translator']"></xsl:value-of></dd>
+		</xsl:if>
 		<!-- Show licence field only if it has a value -->
 		<xsl:if test="not(mods:note[@type='licence']='')">
 			<dt class="licence">Licence</dt>
