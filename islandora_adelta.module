@@ -41,10 +41,10 @@ function islandora_adelta_menu() {
   'access callback' => 'islandora_basic_image_access',
   'access arguments' => array(2),
   ); */
-  $items['islandora_adelta/adelta-search-autocomplete'] = array(
+  $items['islandora_adelta/adelta-people-lookup'] = array(
   		'description' => 'A callback for our search autocomplete.',
   		'file' => 'includes/search.autocomplete.inc',
-  		'page callback' => 'islandora_search_autocomplete',
+  		'page callback' => 'adelta_people_lookup',
   		'access arguments' => array('administer site configuration'),
   		'type' => MENU_CALLBACK,
   );

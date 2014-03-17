@@ -2,7 +2,7 @@
 /**
  * Menu callback; Retrieve a JSON object containing autocomplete suggestion for search.
  */
-function islandora_search_autocomplete($string) {
+function adelta_people_lookup($string) {
 	//$module_path = drupal_get_path('module', 'islandora_adelta');
 	//drupal_add_js($module_path . '/js/test_me.js');
 	$matches = array();

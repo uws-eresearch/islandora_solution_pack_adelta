@@ -1,10 +1,9 @@
 <?xml version="1.0"?>
 <definition xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2"><properties><root_name>mods</root_name><schema_uri>http://www.loc.gov/standards/mods/v3/mods-3-5.xsd</schema_uri><namespaces default="http://www.loc.gov/mods/v3"><namespace prefix="xlink">http://www.w3.org/1999/xlink</namespace><namespace prefix="xsi">http://www.w3.org/2001/XMLSchema-instance</namespace><namespace prefix="mods">http://www.loc.gov/mods/v3</namespace></namespaces></properties><form><properties><type>form</type><access>TRUE</access><required>FALSE</required><tree>TRUE</tree><actions><create>NULL</create><read><path>//mods:mods[1]</path><context>document</context></read><update>NULL</update><delete>NULL</delete></actions></properties><children>
-<element name="titleInfo"><properties><type>markup</type><access>TRUE</access><required>FALSE</required><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>element</type><prefix>NULL</prefix><value>titleInfo</value></create><read><path>mods:titleInfo</path><context>parent</context></read><update>NULL</update><delete>NULL</delete></actions></properties><children><element name="title"><properties><type>textfield</type><access>TRUE</access><required>TRUE</required><title>Title</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>element</type><prefix>NULL</prefix><value>title</value></create><read><path>mods:title</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties><children/></element></children></element><element name="name"><properties><type>tabs</type><access>TRUE</access><required>FALSE</required><title>Name</title><tree>TRUE</tree></properties><children><element name="0"><properties><type>tabpanel</type><access>TRUE</access><required>FALSE</required><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>element</type><prefix>NULL</prefix><value>name</value></create><read><path>mods:name[mods:role/mods:roleTerm!="entry_author" and mods:role/mods:roleTerm!="translator"]</path><context>parent</context></read><update>NULL</update><delete><path>self::node()</path><context>self</context></delete></actions></properties><children><element name="type"><properties><type>select</type><access>TRUE</access><default_value>personal</default_value><options><corporate>corporate</corporate><personal>personal</personal></options><required>FALSE</required><title>Type</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema></schema><type>attribute</type><prefix>NULL</prefix><value>type</value></create><read><path>@type</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties><children/></element><element name="namePart"><properties><type>textfield</type><access>
+<element name="titleInfo"><properties><type>markup</type><access>TRUE</access><required>FALSE</required><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>element</type><prefix>NULL</prefix><value>titleInfo</value></create><read><path>mods:titleInfo</path><context>parent</context></read><update>NULL</update><delete>NULL</delete></actions></properties><children><element name="title"><properties><type>textfield</type><access>TRUE</access><required>TRUE</required><title>Title</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>element</type><prefix>NULL</prefix><value>title</value></create><read><path>mods:title</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties><children/></element></children></element><element name="name"><properties><type>tabs</type><access>TRUE</access><required>FALSE</required><title>Name</title><tree>TRUE</tree></properties><children><element name="0"><properties><type>tabpanel</type><access>TRUE</access><required>FALSE</required><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>element</type><prefix>NULL</prefix><value>name</value></create><read><path>mods:name[mods:role/mods:roleTerm!="entry_author" and mods:role/mods:roleTerm!="translator"]</path><context>parent</context></read><update>NULL</update><delete><path>self::node()</path><context>self</context></delete></actions></properties><children><element name="adelta-namePart"><properties><type>textfield</type><access>
 	TRUE
-	</access><autocomplete_path>islandora_adelta/adelta-search-autocomplete</autocomplete_path><required>FALSE</required><title>Name</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>xml</type><prefix>NULL</prefix><value>&lt;namePart&gt;%value%&lt;/namePart&gt;</value></create><read><path>mods:namePart</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete><path>self::node()</path><context>self</context></delete></actions>
-	</properties>
-	<children/></element>
+	</access><autocomplete_path>islandora_adelta/adelta-people-lookup</autocomplete_path><required>TRUE</required><title>Name</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>xml</type><prefix>NULL</prefix><value>&lt;namePart&gt;%value%&lt;/namePart&gt;</value></create><read><path>mods:namePart</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete><path>self::node()</path><context>self</context></delete></actions>
+	</properties></element>
 	<element name="uri">
 		<properties><type>textfield</type>
 			<access>TRUE</access>
@@ -33,18 +32,20 @@
                                         http://id.loc.gov/vocabulary/relators.html - e.g. Artist,
                                         Creator, Designer, Engraver, Illustrator, Photographer,
                                         Printmaker, etc.</description><required>FALSE</required><title>Role</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>xml</type><prefix>NULL</prefix><value>&lt;role&gt;&lt;roleTerm authority="marcrelator"
-                                                type="text"&gt;%value%&lt;/roleTerm&gt;&lt;/role&gt;</value></create><read><path>mods:role/mods:roleTerm</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete><path>self::node()</path><context>self</context></delete></actions></properties><children/></element></children></element></children></element><element name="identifier"><properties><type>hidden</type><access>TRUE</access><description>A unique identifying number for the creative work. Comment: First use what is in VIAF, and then create IDs as needed.</description><required>FALSE</required><title>Unique identification number</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>xml</type><prefix>NULL</prefix><value>&lt;identifier type="unique_id"&gt;%value%&lt;/identifier&gt;</value></create><read><path>mods:identifier[@type="unique_id"]</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete><path>self::node()</path>
+                                                type="text"&gt;%value%&lt;/roleTerm&gt;&lt;/role&gt;</value></create><read><path>mods:role/mods:roleTerm</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete><path>self::node()</path><context>self</context></delete></actions></properties></element></children></element></children></element><element name="identifier"><properties><type>hidden</type><access>TRUE</access><description>A unique identifying number for the creative work. Comment: First use what is in VIAF, and then create IDs as needed.</description><required>FALSE</required><title>Unique identification number</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>xml</type><prefix>NULL</prefix><value>&lt;identifier type="unique_id"&gt;%value%&lt;/identifier&gt;</value></create><read><path>mods:identifier[@type="unique_id"]</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete><path>self::node()</path>
 	<context>self</context></delete></actions></properties><children/></element>
-	<element name="description"><properties><type>textarea</type><access>TRUE</access><required>FALSE</required><title>Description</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema /><type>element</type><prefix>NULL</prefix><value>abstract</value></create><read><path>mods:abstract</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties><children /></element><element name="language"><properties><type>textfield</type><access>TRUE</access><description>Select a three letter iso639-2b language code from &lt;a
+	<element name="description"><properties><type>textarea</type><access>TRUE</access><required>TRUE</required><title>Description</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema /><type>element</type><prefix>NULL</prefix><value>abstract</value></create><read><path>mods:abstract</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties><children /></element><element name="language"><properties><type>textfield</type><access>TRUE</access>
+	<default_value>EN</default_value>
+	<description>Select a three letter iso639-2b language code from &lt;a
                         href="http://www.loc.gov/standards/iso639-2/php/code_list.php"
-                        target="_blank"&gt;http://www.loc.gov/standards/iso639-2/php/code_list.php&lt;/a&gt;</description><required>FALSE</required><title>Language</title><tree>TRUE</tree>
+                        target="_blank"&gt;http://www.loc.gov/standards/iso639-2/php/code_list.php&lt;/a&gt;</description><required>TRUE</required><title>Language</title><tree>TRUE</tree>
 	<actions><create><path>self::node()</path><context>parent</context><schema /><type>xml</type><prefix>NULL</prefix><value>&lt;language&gt;&lt;languageTerm authority="iso639-2b"
                                 type="code"&gt;%value%&lt;/languageTerm&gt;&lt;/language&gt;</value></create><read><path>mods:language/mods:languageTerm</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete><path>self::node()</path><context>self</context></delete></actions></properties></element><element name="date">
 		<properties>
 			<type>textfield</type>
 			<access>TRUE</access>
 			<description>Enter date in the format YYYY-MM-DD.</description>
-			<required>FALSE</required>
+			<required>TRUE</required>
 			<title>Date</title>
 			<tree>TRUE</tree>
 			<actions>
@@ -182,8 +183,8 @@
 				<skype>Skype</skype>
 
 			</options>
-			<required>FALSE</required>
-			<title>Medium/Platform</title>
+			<required>TRUE</required>
+			<title>Medium</title>
 			<tree>TRUE</tree>
 			<actions>
 				<create>
@@ -201,12 +202,38 @@
 				<delete>
 					<path>self::node()</path>
 					<context>self</context></delete></actions></properties></element>
-	<element name="entry_author">
+	<element name="entry_author_fieldset">
+		<properties>
+			<type>fieldset</type>
+			<access>TRUE</access>
+			<required>FALSE</required>
+			<title>Entry Author</title>
+			<tree>FALSE</tree>
+			<collapsible>TRUE</collapsible>
+			<actions>
+				<create>
+					<path>self::node()</path>
+					<context>parent</context>
+					<schema></schema>
+					<type>xml</type>
+					<prefix>NULL</prefix>
+					<value>&lt;name&gt;&lt;role&gt;&lt;roleTerm&gt;entry_author&lt;/roleTerm&gt;&lt;/role&gt;&lt;/name&gt;</value></create>
+				<read>
+					<path>mods:name[mods:role/mods:roleTerm="entry_author"]</path>
+					<context>parent</context></read>
+				<update>
+					<path>self::node()</path>
+					<context>self</context></update>
+				<delete>
+					<path>self::node()</path>
+					<context>parent</context></delete></actions></properties>
+		<children><element name="entryAuthor-adelta-namePart">
 		<properties>
 			<type>textfield</type>
 			<access>TRUE</access>
-			<required>FALSE</required>
-			<title>Entry author</title>
+			<autocomplete_path>islandora_adelta/adelta-people-lookup</autocomplete_path>
+			<required>TRUE</required>
+			<title>Name</title>
 			<tree>TRUE</tree>
 			<actions>
 				<create>
@@ -215,9 +242,9 @@
 					<schema></schema>
 					<type>xml</type>
 					<prefix>NULL</prefix>
-					<value>&lt;name&gt;&lt;namePart&gt;%value%&lt;/namePart&gt;&lt;role&gt;&lt;roleTerm&gt;entry_author&lt;/roleTerm&gt;&lt;/role&gt;&lt;/name&gt;</value></create>
+					<value>&lt;namePart&gt;%value%&lt;/namePart&gt;</value></create>
 				<read>
-					<path>mods:name/mods:namePart[following-sibling::mods:role/mods:roleTerm="entry_author"]</path>
+					<path>mods:namePart</path>
 					<context>parent</context></read>
 				<update>
 					<path>self::node()</path>
@@ -225,6 +252,31 @@
 				<delete>
 					<path>self::node()</path>
 					<context>self</context></delete></actions></properties></element>
+			<element name="entryAuthor_uri">
+				<properties>
+					<type>textfield</type>
+					<access>TRUE</access>
+					<required>FALSE</required>
+					<title>URI</title>
+					<tree>TRUE</tree>
+					<actions>
+						<create>
+							<path>self::node()</path>
+							<context>parent</context>
+							<schema></schema>
+							<type>attribute</type>
+							<prefix>NULL</prefix>
+							<value>uri</value></create>
+						<read>
+							<path>@uri</path>
+							<context>parent</context></read>
+						<update>
+							<path>self::node()</path>
+							<context>self</context></update>
+						<delete>
+							<path>self::node()</path>
+							<context>self</context></delete></actions></properties></element></children></element>
+	
 	<element name="url">
 		<properties>
 			<type>textfield</type>
@@ -250,12 +302,38 @@
 					<path>self::node()</path>
 					<context>self</context></delete></actions></properties></element><element name="isbn"><properties><type>textfield</type><access>TRUE</access><required>FALSE</required><title>ISBN</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema /><type>xml</type><prefix>NULL</prefix><value>&lt;identifier type="isbn"&gt;%value%&lt;/identifier&gt;</value></create><read><path>mods:identifier[@type="isbn"]</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete><path>self::node()</path>
 	<context>self</context></delete></actions></properties><children /></element>
-	<element name="translator">
+	<element name="translator_fieldset">
 		<properties>
-			<type>textfield</type>
+			<type>fieldset</type>
 			<access>TRUE</access>
 			<required>FALSE</required>
 			<title>Translator</title>
+			<tree>FALSE</tree>
+			<collapsible>TRUE</collapsible>
+			<actions>
+				<create>
+					<path>self::node()</path>
+					<context>parent</context>
+					<schema></schema>
+					<type>xml</type>
+					<prefix>NULL</prefix>
+					<value>&lt;name&gt;&lt;role&gt;&lt;roleTerm&gt;translator&lt;/roleTerm&gt;&lt;/role&gt;&lt;/name&gt;</value></create>
+				<read>
+					<path>mods:name[mods:role/mods:roleTerm="translator"]</path>
+					<context>parent</context></read>
+				<update>
+					<path>self::node()</path>
+					<context>self</context></update>
+				<delete>
+					<path>self::node()</path>
+					<context>self</context></delete></actions></properties>
+		<children><element name="translator-adelta-namePart">
+		<properties>
+			<type>textfield</type>
+			<access>TRUE</access>
+			<autocomplete_path>islandora_adelta/adelta-people-lookup</autocomplete_path>
+			<required>FALSE</required>
+			<title>Name</title>
 			<tree>TRUE</tree>
 			<actions>
 				<create>
@@ -264,9 +342,9 @@
 					<schema></schema>
 					<type>xml</type>
 					<prefix>NULL</prefix>
-					<value>&lt;name&gt;&lt;namePart&gt;%value%&lt;/namePart&gt;&lt;role&gt;&lt;roleTerm&gt;translator&lt;/roleTerm&gt;&lt;/role&gt;&lt;/name&gt;</value></create>
+					<value>&lt;namePart&gt;%value%&lt;/namePart&gt;</value></create>
 				<read>
-					<path>mods:name/mods:namePart[following-sibling::mods:role/mods:roleTerm='translator']</path>
+					<path>mods:namePart</path>
 					<context>parent</context></read>
 				<update>
 					<path>self::node()</path>
@@ -275,6 +353,29 @@
 					<path>self::node()</path>
 					<context>self</context></delete></actions></properties>
 		</element>
+		<element name="translator_uri">
+		<properties><type>textfield</type>
+			<access>TRUE</access>
+			<required>FALSE</required>
+			<title>URI</title>
+			<tree>TRUE</tree>
+			<actions>
+				<create>
+					<path>self::node()</path>
+					<context>parent</context>
+					<schema></schema>
+					<type>attribute</type>
+					<prefix>NULL</prefix>
+					<value>uri</value></create>
+				<read>
+					<path>@uri</path>
+					<context>parent</context></read>
+				<update>
+					<path>self::node()</path>
+					<context>self</context></update>
+				<delete></delete></actions>
+			</properties></element></children></element>
+	
 	<element name="license">
 		<properties>
 			<type>textfield</type>
@@ -302,7 +403,7 @@
 		<properties>
 			<type>textfield</type>
 			<access>TRUE</access>
-			<required>FALSE</required>
+			<required>TRUE</required>
 			<title>Date of revision</title>
 			<tree>TRUE</tree>
 			<actions>

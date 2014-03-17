@@ -38,7 +38,7 @@ xmlns:mods="http://www.loc.gov/mods/v3" exclude-result-prefixes="mods">
 		<dt class="internetMediaType">Medium</dt>
 		<dd class="internetMediaType"><xsl:value-of select="mods:physicalDescription/mods:internetMediaType"></xsl:value-of></dd>
 		<dt class="entry_author">Entry author</dt>
-		<dd class="entry_author"><xsl:value-of select="mods:name/mods:namePart[following-sibling::mods:role/mods:roleTerm='entry_author']"></xsl:value-of></dd>
+		<dd class="entry_author"><xsl:value-of select="mods:name/mods:namePart[preceding-sibling::mods:role/mods:roleTerm='entry_author']"></xsl:value-of></dd>
 		<dt class="url">URL</dt>
 		<dd class="url"><xsl:value-of select="mods:location/mods:url"></xsl:value-of></dd>
 		<!-- Show isbn field only if it has a value -->
@@ -46,9 +46,9 @@ xmlns:mods="http://www.loc.gov/mods/v3" exclude-result-prefixes="mods">
 			<dt class="isbn">ISBN</dt>
 			<dd class="isbn"><xsl:value-of select="mods:identifier[@type='isbn']"></xsl:value-of></dd>
 		</xsl:if>
-		<xsl:if test="not(mods:name/mods:namePart[following-sibling::mods:role/mods:roleTerm='translator']='')">
+		<xsl:if test="not(mods:name/mods:namePart[preceding-sibling::mods:role/mods:roleTerm='translator']='')">
 			<dt class="translator">Translator</dt>
-			<dd class="translator"><xsl:value-of select="mods:name/mods:namePart[following-sibling::mods:role/mods:roleTerm='translator']"></xsl:value-of></dd>
+			<dd class="translator"><xsl:value-of select="mods:name/mods:namePart[preceding-sibling::mods:role/mods:roleTerm='translator']"></xsl:value-of></dd>
 		</xsl:if>
 		<!-- Show licence field only if it has a value -->
 		<xsl:if test="not(mods:note[@type='licence']='')">

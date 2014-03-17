@@ -7,7 +7,7 @@ if(Drupal.jsAC){
     var parentFound = Drupal.jsAC.prototype.found;
     Drupal.jsAC.prototype.found = function (matches) {
     	
-    	if(this.input.id.match(/edit-name-(\d+)-namepart(--(\d+))?/)){
+    	if(this.input.id.match(/edit-[A-Za-z]*(-(\d+))?-adelta-namepart(--(\d+))?/)){
     	//if(this.input.id == "mint-text"){
     	
 	    	// If no value in the textfield, do not show the popup.
@@ -73,7 +73,7 @@ if(Drupal.jsAC){
     Drupal.jsAC.prototype.hidePopup = function (keycode) {
        
     	//if(this.input.id == "mint-text"){
-    	if(this.input.id.match(/edit-name-(\d+)-namepart(--(\d+))?/)){
+    	if(this.input.id.match(/edit-[A-Za-z]*(-(\d+))?-adelta-namepart(--(\d+))?/)){
     		
     		// Select item if the right key or mousebutton was pressed.
     		/*if (this.selected && ((keycode && keycode != 46 && keycode != 8 && keycode != 27) || !keycode)) {
@@ -87,7 +87,7 @@ if(Drupal.jsAC){
     			
     			//put the value in the other text field. No need to trigger an event
     			//get the id using a regex. replace namepart with uri
-    			var uri_id = this.input.id.replace("namepart", "uri");
+    			var uri_id = this.input.id.replace("adelta-namepart", "uri");
     			$('#'+uri_id).val($(this.selected).data('uri'));
     		}
     		// Hide popup.
