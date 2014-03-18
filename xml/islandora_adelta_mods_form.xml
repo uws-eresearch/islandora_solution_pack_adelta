@@ -403,7 +403,7 @@
 		<properties>
 			<type>hidden</type>
 			<access>TRUE</access>
-			<required>TRUE</required>
+			<required>FALSE</required>
 			<title>Date of revision</title>
 			<tree>TRUE</tree>
 			<actions>
