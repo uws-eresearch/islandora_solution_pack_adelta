@@ -401,7 +401,7 @@
 					<context>self</context></delete></actions></properties></element>
 	<element name="date_revised">
 		<properties>
-			<type>textfield</type>
+			<type>hidden</type>
 			<access>TRUE</access>
 			<required>TRUE</required>
 			<title>Date of revision</title>

@@ -245,11 +245,14 @@ function islandora_adelta_preprocess_islandora_adelta(array &$variables) {
   
   $proc = new XSLTProcessor();
   $proc->importStylesheet($mods_xsl);
-  $mods_string = &$proc->transformToXML($mods_doc);
+  $mods_string = $proc->transformToXML($mods_doc);
   
   //We need to take the mods string with a placeholder for unique_id and add unique id to it
   $unique_id = url("islandora/object/{$islandora_object->id}", array('absolute' => TRUE));
-  $mods_string = preg_replace('/\{\{(\w+)\}\}/', $unique_id, $mods_string);
+  $mods_string = preg_replace('/\{\{(unique_id)\}\}/', $unique_id, $mods_string);
+  
+  //Replace the placeholder for the modified date
+  $mods_string = preg_replace('/\{\{(date_modified)\}\}/', $islandora_object->lastModifiedDate, $mods_string);
   $variables['mods'] = $mods_string;
 }
 

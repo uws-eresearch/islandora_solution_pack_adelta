@@ -56,6 +56,6 @@ xmlns:mods="http://www.loc.gov/mods/v3" exclude-result-prefixes="mods">
 			<dd class="licence"><xsl:value-of select="mods:note[@type='licence']"></xsl:value-of></dd>
 		</xsl:if>
 		<dt class="date_modified">Date of revision</dt>
-		<dd class="date_modified"><xsl:value-of select="mods:originInfo/mods:dateOther[@type='entry_revision']"></xsl:value-of></dd>
+		<dd class="date_modified">{{date_modified}}</dd>
 	</xsl:template>
 </xsl:stylesheet>
