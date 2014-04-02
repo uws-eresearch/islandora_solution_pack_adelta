@@ -25,7 +25,9 @@ xmlns:mods="http://www.loc.gov/mods/v3" exclude-result-prefixes="mods">
 		<dt class="unique_id">Unique id</dt>
 		<dd class="unique_id">{{unique_id}}</dd>
 		<dt class="description">Description</dt>
-		<dd class="description"><xsl:value-of select="mods:abstract"></xsl:value-of></dd>
+		<dd class="description"><xsl:value-of select="mods:abstract[@type='description']"></xsl:value-of></dd>
+		<dt class="artist_stmt">Artist Statement</dt>
+		<dd class="artist_stmt"><xsl:value-of select="mods:abstract[@type='artist_stmt']"></xsl:value-of></dd>
 		<dt class="language">Language</dt>
 		<dd class="language"><xsl:value-of select="mods:language"></xsl:value-of></dd>
 		<dt class="date">Date</dt>

@@ -34,7 +34,32 @@
                                         Printmaker, etc.</description><required>FALSE</required><title>Role</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>xml</type><prefix>NULL</prefix><value>&lt;role&gt;&lt;roleTerm authority="marcrelator"
                                                 type="text"&gt;%value%&lt;/roleTerm&gt;&lt;/role&gt;</value></create><read><path>mods:role/mods:roleTerm</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete><path>self::node()</path><context>self</context></delete></actions></properties></element></children></element></children></element><element name="identifier"><properties><type>hidden</type><access>TRUE</access><description>A unique identifying number for the creative work. Comment: First use what is in VIAF, and then create IDs as needed.</description><required>FALSE</required><title>Unique identification number</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>xml</type><prefix>NULL</prefix><value>&lt;identifier type="unique_id"&gt;%value%&lt;/identifier&gt;</value></create><read><path>mods:identifier[@type="unique_id"]</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete><path>self::node()</path>
 	<context>self</context></delete></actions></properties><children/></element>
-	<element name="description"><properties><type>textarea</type><access>TRUE</access><required>TRUE</required><title>Description</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema /><type>element</type><prefix>NULL</prefix><value>abstract</value></create><read><path>mods:abstract</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties><children /></element><element name="language"><properties><type>textfield</type><access>TRUE</access>
+	<element name="description"><properties><type>textarea</type><access>TRUE</access><required>TRUE</required><title>Description</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema /><type>xml</type><prefix>NULL</prefix><value>&lt;abstract type="description"&gt;%value%&lt;/abstract&gt;</value></create><read><path>mods:abstract[@type="description"]</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete>NULL</delete></actions></properties></element>
+	<element name="artist_statement">
+		<properties>
+			<type>textarea</type>
+			<access>TRUE</access>
+			<required>FALSE</required>
+			<title>Artist Statement</title>
+			<tree>TRUE</tree>
+			<actions>
+				<create>
+					<path>self::node()</path>
+					<context>parent</context>
+					<schema></schema>
+					<type>xml</type>
+					<prefix>NULL</prefix>
+					<value>&lt;abstract type="artist_stmt"&gt;%value%&lt;/abstract&gt;</value></create>
+				<read>
+					<path>mods:bstract[@type="artist_stmt"]</path>
+					<context>parent</context></read>
+				<update>
+					<path>self::node()</path>
+					<context>self</context></update>
+				<delete>
+					<path>self::node()</path>
+					<context>self</context></delete></actions></properties></element>
+	<element name="language"><properties><type>textfield</type><access>TRUE</access>
 	<default_value>EN</default_value>
 	<description>Select a three letter iso639-2b language code from &lt;a
                         href="http://www.loc.gov/standards/iso639-2/php/code_list.php"
