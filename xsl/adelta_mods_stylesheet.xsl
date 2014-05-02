@@ -23,7 +23,7 @@ xmlns:mods="http://www.loc.gov/mods/v3" exclude-result-prefixes="mods">
     	<span property="name"><xsl:value-of select="mods:name/mods:namePart[following-sibling::mods:role/mods:roleTerm='Author']"></xsl:value-of></span></span>
 		</dd>
 		<dt class="unique_id">Unique id</dt>
-		<dd class="unique_id">{{unique_id}}</dd>
+		<dd class="unique_id"><a href="">{{unique_id}}</a></dd>
 		<dt class="description">Description</dt>
 		<dd class="description"><xsl:value-of select="mods:abstract[@type='description']"></xsl:value-of></dd>
 		<dt class="artist_stmt">Artist Statement</dt>
@@ -42,7 +42,12 @@ xmlns:mods="http://www.loc.gov/mods/v3" exclude-result-prefixes="mods">
 		<dt class="entry_author">Entry author</dt>
 		<dd class="entry_author"><xsl:value-of select="mods:name/mods:namePart[preceding-sibling::mods:role/mods:roleTerm='entry_author']"></xsl:value-of></dd>
 		<dt class="url">URL</dt>
-		<dd class="url"><xsl:value-of select="mods:location/mods:url"></xsl:value-of></dd>
+		<dd class="url">
+		<xsl:for-each select="mods:location">
+		<a><xsl:attribute name="href"><xsl:value-of select="mods:url"/></xsl:attribute>
+		<xsl:value-of select="mods:url"></xsl:value-of></a><br/>
+		</xsl:for-each>
+		</dd>
 		<!-- Show isbn field only if it has a value -->
 		<xsl:if test="not(mods:identifier[@type='isbn']='')">
 			<dt class="isbn">ISBN</dt>
