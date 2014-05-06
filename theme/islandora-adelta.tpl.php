@@ -20,7 +20,7 @@
     <?php if (!empty($dc_array['dc:description']['value'])): ?>
       <h2><?php print $dc_array['dc:description']['label']; ?></h2>
       <p><?php print $dc_array['dc:description']['value']; ?></p> 
-    <?php endif; ?>-->
+    <?php endif; ?>
     <?php if ($parent_collections): ?>
       <div>
         <h2><?php print t('In collections'); ?></h2>
@@ -30,7 +30,7 @@
           <?php endforeach; ?>
         </ul>
       </div>
-    <?php endif; ?>
+    <?php endif; ?>-->
   </div>
   </div>
   <fieldset class="collapsible islandora-adelta-metadata">
