@@ -16,11 +16,15 @@ xmlns:mods="http://www.loc.gov/mods/v3" xmlns:xlink="http://www.w3.org/1999/xlin
 		<dd class="title first"><xsl:value-of select="mods:titleInfo/mods:title"></xsl:value-of></dd>
 		<dt class="creator">Creator</dt>
 		<dd class="creator">
+		<xsl:for-each select="mods:name[mods:role/mods:roleTerm='Author']">
 		<span property="dc:creator">
-		<xsl:attribute name="href"><xsl:value-of select="mods:name[mods:role/mods:roleTerm='Author']/@xlink:href"/></xsl:attribute></span>
+		<xsl:attribute name="href"><xsl:value-of select="@xlink:href"/></xsl:attribute>
 		<span vocab="http://xmlns.com/foaf/0.1/" typeof="Person">
-		<xsl:attribute name="about"><xsl:value-of select="mods:name[mods:role/mods:roleTerm='Author']/@xlink:href"/></xsl:attribute>
-    	<span property="name"><xsl:value-of select="mods:name/mods:namePart[following-sibling::mods:role/mods:roleTerm='Author']"></xsl:value-of></span></span>
+		<xsl:attribute name="about"><xsl:value-of select="@xlink:href"/></xsl:attribute>
+    	<span property="name"><xsl:value-of select="mods:namePart"></xsl:value-of></span>
+    	</span>
+    	</span><br/>
+		</xsl:for-each>
 		</dd>
 		<dt class="unique_id">Unique id</dt>
 		<dd class="unique_id"><a href="">{{unique_id}}</a></dd>
