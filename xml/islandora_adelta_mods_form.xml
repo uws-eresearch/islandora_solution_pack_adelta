@@ -17,14 +17,16 @@
 					<schema></schema>
 					<type>attribute</type>
 					<prefix>NULL</prefix>
-					<value>uri</value></create>
+					<value>xlink:href</value></create>
 				<read>
-					<path>@uri</path>
+					<path>@xlink:href</path>
 					<context>parent</context></read>
 				<update>
 					<path>self::node()</path>
 					<context>self</context></update>
-				<delete></delete></actions>
+				<delete>
+					<path>self::node()</path>
+					<context>self</context></delete></actions>
 			</properties></element>
 	<element name="role"><properties><type>textfield</type><access>TRUE</access>
 	<default_value>Author</default_value>
@@ -49,9 +51,9 @@
 					<schema></schema>
 					<type>attribute</type>
 					<prefix>NULL</prefix>
-					<value>displayLabel</value></create>
+					<value>xlink:href</value></create>
 				<read>
-					<path>mods:abstract[@type="description"]/@displayLabel</path>
+					<path>mods:abstract[@type="description"]/@xlink:href</path>
 					<context>parent</context></read>
 				<update>
 					<path>self::node()</path>
@@ -59,6 +61,80 @@
 				<delete>
 					<path>self::node()</path>
 					<context>self</context></delete></actions></properties></element>
+    <element name="entry_author_fieldset">
+               <properties>
+                       <type>fieldset</type>
+                       <access>TRUE</access>
+                       <required>FALSE</required>
+                       <title>Entry Author</title>
+                       <tree>FALSE</tree>
+                       <collapsible>TRUE</collapsible>
+                       <actions>
+                               <create>
+                                       <path>self::node()</path>
+                                       <context>parent</context>
+                                       <schema></schema>
+                                       <type>xml</type>
+                                       <prefix>NULL</prefix>
+                                       <value>&lt;name&gt;&lt;role&gt;&lt;roleTerm&gt;entry_author&lt;/roleTerm&gt;&lt;/role&gt;&lt;/name&gt;</value></create>
+                               <read>
+                                       <path>mods:name[mods:role/mods:roleTerm="entry_author"]</path>
+                                       <context>parent</context></read>
+                               <update>
+                                       <path>self::node()</path>
+                                       <context>self</context></update>
+                               <delete>
+                                       <path>self::node()</path>
+                                       <context>parent</context></delete></actions></properties>
+               <children><element name="entryAuthor-adelta-namePart">
+               <properties>
+                       <type>textfield</type>
+                       <access>TRUE</access>
+                       <autocomplete_path>islandora_adelta/adelta-people-lookup</autocomplete_path>
+                       <required>FALSE</required>
+                       <title>Name</title>
+                       <tree>TRUE</tree>
+                       <actions>
+                               <create>
+                                       <path>self::node()</path>
+                                       <context>parent</context>
+                                       <schema></schema>
+                                       <type>xml</type>
+                                       <prefix>NULL</prefix>
+                                       <value>&lt;namePart&gt;%value%&lt;/namePart&gt;</value></create>
+                               <read>
+                                       <path>mods:namePart</path>
+                                       <context>parent</context></read>
+                               <update>
+                                       <path>self::node()</path>
+                                       <context>self</context></update>
+                               <delete>
+                                       <path>self::node()</path>
+                                       <context>self</context></delete></actions></properties></element>
+                       <element name="entryAuthor_uri">
+                               <properties>
+                                       <type>textfield</type>
+                                       <access>TRUE</access>
+                                       <required>FALSE</required>
+                                       <title>URI</title>
+                                       <tree>TRUE</tree>
+                                       <actions>
+                                               <create>
+                                                       <path>self::node()</path>
+                                                       <context>parent</context>
+                                                       <schema></schema>
+                                                       <type>attribute</type>
+                                                       <prefix>NULL</prefix>
+                                                       <value>xlink:href</value></create>
+                                               <read>
+                                                       <path>@xlink:href</path>
+                                                       <context>parent</context></read>
+                                               <update>
+                                                       <path>self::node()</path>
+                                                       <context>self</context></update>
+                                               <delete>
+                                                       <path>self::node()</path>
+                                                       <context>self</context></delete></actions></properties></element></children></element>
 	<element name="artist_statement">
 		<properties>
 			<type>textarea</type>
@@ -347,81 +423,6 @@
 				<delete>
 					<path>self::node()</path>
 					<context>self</context></delete></actions></properties></element>
-	<element name="entry_author_fieldset">
-		<properties>
-			<type>fieldset</type>
-			<access>TRUE</access>
-			<required>FALSE</required>
-			<title>Entry Author</title>
-			<tree>FALSE</tree>
-			<collapsible>TRUE</collapsible>
-			<actions>
-				<create>
-					<path>self::node()</path>
-					<context>parent</context>
-					<schema></schema>
-					<type>xml</type>
-					<prefix>NULL</prefix>
-					<value>&lt;name&gt;&lt;role&gt;&lt;roleTerm&gt;entry_author&lt;/roleTerm&gt;&lt;/role&gt;&lt;/name&gt;</value></create>
-				<read>
-					<path>mods:name[mods:role/mods:roleTerm="entry_author"]</path>
-					<context>parent</context></read>
-				<update>
-					<path>self::node()</path>
-					<context>self</context></update>
-				<delete>
-					<path>self::node()</path>
-					<context>parent</context></delete></actions></properties>
-		<children><element name="entryAuthor-adelta-namePart">
-		<properties>
-			<type>textfield</type>
-			<access>TRUE</access>
-			<autocomplete_path>islandora_adelta/adelta-people-lookup</autocomplete_path>
-			<required>TRUE</required>
-			<title>Name</title>
-			<tree>TRUE</tree>
-			<actions>
-				<create>
-					<path>self::node()</path>
-					<context>parent</context>
-					<schema></schema>
-					<type>xml</type>
-					<prefix>NULL</prefix>
-					<value>&lt;namePart&gt;%value%&lt;/namePart&gt;</value></create>
-				<read>
-					<path>mods:namePart</path>
-					<context>parent</context></read>
-				<update>
-					<path>self::node()</path>
-					<context>self</context></update>
-				<delete>
-					<path>self::node()</path>
-					<context>self</context></delete></actions></properties></element>
-			<element name="entryAuthor_uri">
-				<properties>
-					<type>textfield</type>
-					<access>TRUE</access>
-					<required>FALSE</required>
-					<title>URI</title>
-					<tree>TRUE</tree>
-					<actions>
-						<create>
-							<path>self::node()</path>
-							<context>parent</context>
-							<schema></schema>
-							<type>attribute</type>
-							<prefix>NULL</prefix>
-							<value>uri</value></create>
-						<read>
-							<path>@uri</path>
-							<context>parent</context></read>
-						<update>
-							<path>self::node()</path>
-							<context>self</context></update>
-						<delete>
-							<path>self::node()</path>
-							<context>self</context></delete></actions></properties></element></children></element>
-	
 	<element name="url">
 		<properties>
 			<type>textfield</type>
@@ -446,7 +447,7 @@
 				<delete>
 					<path>self::node()</path>
 					<context>self</context></delete></actions></properties></element><element name="isbn"><properties><type>textfield</type><access>TRUE</access><required>FALSE</required><title>ISBN</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema /><type>xml</type><prefix>NULL</prefix><value>&lt;identifier type="isbn"&gt;%value%&lt;/identifier&gt;</value></create><read><path>mods:identifier[@type="isbn"]</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete><path>self::node()</path>
-	<context>self</context></delete></actions></properties><children /></element>
+	<context>self</context></delete></actions></properties></element>
 	<element name="translator_fieldset">
 		<properties>
 			<type>fieldset</type>
@@ -511,9 +512,9 @@
 					<schema></schema>
 					<type>attribute</type>
 					<prefix>NULL</prefix>
-					<value>uri</value></create>
+					<value>xlink:href</value></create>
 				<read>
-					<path>@uri</path>
+					<path>@xlink:href</path>
 					<context>parent</context></read>
 				<update>
 					<path>self::node()</path>
