@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-xmlns:mods="http://www.loc.gov/mods/v3" xmlns:xlink="http://www.w3.org/1999/xlink" exclude-result-prefixes="mods">
+xmlns:mods="http://www.loc.gov/mods/v3" xmlns:xlink="http://www.w3.org/1999/xlink" exclude-result-prefixes="mods xlink">
 
 <xsl:variable name="lowerCase" select="'abcdefghijklmnopqrstuvwxyz'"/>
 <xsl:variable name="upperCase" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
@@ -26,10 +26,34 @@ xmlns:mods="http://www.loc.gov/mods/v3" xmlns:xlink="http://www.w3.org/1999/xlin
     	</span><br/>
 		</xsl:for-each>
 		</dd>
+		<xsl:if test="mods:name[mods:role/mods:roleTerm='Collaborator']">
+		<dt class="collaborator">Collaborator(s)</dt>
+		<dd class="collaborator">
+		<xsl:for-each select="mods:name[mods:role/mods:roleTerm='Collaborator']">
+		<span property="dc:contributor">
+		<xsl:attribute name="href"><xsl:value-of select="@xlink:href"/></xsl:attribute>
+		<span vocab="http://xmlns.com/foaf/0.1/" typeof="Person">
+		<xsl:attribute name="about"><xsl:value-of select="@xlink:href"/></xsl:attribute>
+    	<span property="name"><xsl:value-of select="mods:namePart"></xsl:value-of></span>
+    	</span>
+    	</span><br/>
+		</xsl:for-each>
+		</dd>
+		</xsl:if>
 		<dt class="unique_id">Unique id</dt>
 		<dd class="unique_id"><a href="">{{unique_id}}</a></dd>
 		<dt class="description">Description</dt>
 		<dd class="description"><xsl:value-of select="mods:abstract[@type='description']"></xsl:value-of></dd>
+		<xsl:if test="not(mods:abstract[@type='description']/@xlink:href='')">
+		<dt class="description_src">Description Source</dt>
+		<dd class="description_src">
+		<a><xsl:attribute name="href"><xsl:value-of select="mods:abstract[@type='description']/@xlink:href"/></xsl:attribute>
+		<xsl:value-of select="mods:abstract[@type='description']/@xlink:href"></xsl:value-of></a></dd>
+		</xsl:if>
+		<xsl:if test="not(mods:name/mods:namePart[preceding-sibling::mods:role/mods:roleTerm='entry_author']='')">
+		<dt class="entry_author">Entry author</dt>
+		<dd class="entry_author"><xsl:value-of select="mods:name/mods:namePart[preceding-sibling::mods:role/mods:roleTerm='entry_author']"></xsl:value-of></dd>
+		</xsl:if>
 		<dt class="artist_stmt">Artist Statement</dt>
 		<dd class="artist_stmt"><xsl:value-of select="mods:abstract[@type='artist_stmt']"></xsl:value-of></dd>
 		<dt class="language">Language</dt>
@@ -43,15 +67,17 @@ xmlns:mods="http://www.loc.gov/mods/v3" xmlns:xlink="http://www.w3.org/1999/xlin
 		</xsl:if>
 		<dt class="internetMediaType">Medium</dt>
 		<dd class="internetMediaType"><xsl:value-of select="mods:physicalDescription/mods:internetMediaType"></xsl:value-of></dd>
-		<dt class="entry_author">Entry author</dt>
-		<dd class="entry_author"><xsl:value-of select="mods:name/mods:namePart[preceding-sibling::mods:role/mods:roleTerm='entry_author']"></xsl:value-of></dd>
+		<xsl:if test="not(mods:location/mods:url[1]='')">
 		<dt class="url">URL</dt>
 		<dd class="url">
-		<xsl:for-each select="mods:location">
-		<a><xsl:attribute name="href"><xsl:value-of select="mods:url"/></xsl:attribute>
-		<xsl:value-of select="mods:url"></xsl:value-of></a><br/>
+		<xsl:for-each select="mods:location/mods:url">
+		<xsl:if test="not(.='')">
+		<a><xsl:attribute name="href"><xsl:value-of select="."/></xsl:attribute>
+		<xsl:value-of select="."></xsl:value-of></a><br/>
+		</xsl:if>
 		</xsl:for-each>
 		</dd>
+		</xsl:if>
 		<!-- Show isbn field only if it has a value -->
 		<xsl:if test="not(mods:identifier[@type='isbn']='')">
 			<dt class="isbn">ISBN</dt>
