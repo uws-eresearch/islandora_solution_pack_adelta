@@ -84,7 +84,7 @@ xmlns:mods="http://www.loc.gov/mods/v3" xmlns:xlink="http://www.w3.org/1999/xlin
 		<dt class="genre">Genre</dt>
 		<dd class="genre"><xsl:value-of select="mods:genre"/></dd>
 		</xsl:if>
-		<xsl:if test="not(mods:location/mods:url[1]='')">
+		<xsl:if test="mods:location and not(mods:location/mods:url[1]='')">
 		<dt class="url">URL</dt>
 		<dd class="url">
 		<xsl:for-each select="mods:location/mods:url">
