@@ -77,7 +77,7 @@ xmlns:mods="http://www.loc.gov/mods/v3" xmlns:xlink="http://www.w3.org/1999/xlin
 		<dd class="media"><xsl:value-of select="mods:physicalDescription/mods:note"/></dd>
 		</xsl:if>
 		<xsl:if test="not(mods:physicalDescription/mods:internetMediaType='')">
-		<dt class="internetMediaType">Medium</dt>
+		<dt class="internetMediaType">Platform</dt>
 		<dd class="internetMediaType"><xsl:value-of select="mods:physicalDescription/mods:internetMediaType"/></dd>
 		</xsl:if>
 		<xsl:if test="not(mods:genre='')">
