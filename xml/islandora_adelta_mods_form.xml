@@ -378,6 +378,38 @@
 				<scansoft>ScanSoft</scansoft>
 				<shell_script>Shell script</shell_script>
 				<skype>Skype</skype>
+				<slideshow_pro>SlideShowPro</slideshow_pro>
+				<soap>SOAP</soap>
+				<social_network>social network</social_network>
+				<socket_io>Socket.IO</socket_io>
+				<sorenson_squeeze>Sorenson Squeeze</sorenson_squeeze>
+				<sound_cloud>SoundCloud</sound_cloud>
+				<speech_manager>Speech manager</speech_manager>
+				<sql>sql</sql>
+				<squeak>Squeak</squeak>
+				<ssp>SSP</ssp>
+				<storyspace>Storyspace</storyspace>
+				<tads_2_5_10>TADS 2.5.10</tads_2_5_10>
+				<tei>TEI</tei>
+				<textaloud>TextAloud</textaloud>
+				<tinderbox>Tinderbox</tinderbox>
+				<tk3_reader>TK3 Reader</tk3_reader>
+				<trackd>trackd</trackd>
+				<tweener>Tweener</tweener>
+				<tweenmax>TweenMax</tweenmax>
+				<twitter>Twitter</twitter>
+				<twitter_api>Twitter API</twitter_api>
+				<txt>TXT</txt>
+				<undum>Undum</undum>
+				<unity_web_player>Unity Web Player</unity_web_player>
+				<virtools_player>Virtools Player</virtools_player>
+				<vrml>VRML</vrml>
+				<vue_6_esprit>Vue 6 Esprit</vue_6_esprit>
+				<winamp>Winamp</winamp>
+				<winvdig>WinVDig</winvdig>
+				<wordnet>WordNet</wordnet>
+				<wordnik_api>Wordnik API</wordnik_api>
+				<wowza_streaming_server></wowza_streaming_server>
 
 			</options>
 			<required>TRUE</required>
