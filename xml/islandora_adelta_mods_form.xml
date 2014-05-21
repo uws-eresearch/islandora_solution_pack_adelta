@@ -409,7 +409,11 @@
 				<winvdig>WinVDig</winvdig>
 				<wordnet>WordNet</wordnet>
 				<wordnik_api>Wordnik API</wordnik_api>
-				<wowza_streaming_server></wowza_streaming_server>
+				<wowza_streaming_server>Wowza Streaming Server</wowza_streaming_server>
+				<xhtml>XHTML</xhtml>
+				<xml>XML</xml>
+				<z_code>Z-code</z_code>
+				<zoom>Zoom</zoom>
 
 			</options>
 			<required>TRUE</required>
