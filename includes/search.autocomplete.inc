@@ -72,7 +72,7 @@ function lookUpPeople($keyword) {
 	try {
 		//$config = $this->getConfig();
 		//$url = $config['mint']['url'] . '/Parties_People/opensearch/lookup?searchTerms=' . urlencode($keyword);
-		$url = 'http://basset.uws.edu.au:9001/mint/Parties_People/opensearch/lookup?searchTerms=' . urlencode($keyword);
+		$url = 'http://research-data.uws.edu.au:9001/mint/Parties_People/opensearch/lookup?searchTerms=' . urlencode($keyword);
 		//\OCP\Util::writeLog("crate_it::lookUpPeople", $url, \OCP\Util::DEBUG);
 
 		// Now call the mint
