@@ -15,55 +15,33 @@ function adelta_people_lookup($string) {
 	$results = lookUpPeople($string);
 	
 	foreach($results as $person){
-		//$result_metadata = $person->result-metadata;
-		//$data = json_encode($person);
 		$match = array();
-		
 		$metadata_array = json_decode(json_encode($person), true);
-		$all_data = $metadata_array['result-metadata']['all'];
 		
-		$id = $all_data['id'];
-		$honorific = trim($all_data['Honorific'][0]);
-		$given_name = trim($all_data['Given_Name'][0]);
-		$family_name = trim($all_data['Family_Name'][0]);
-		$email = trim($all_data['Email'][0]);
-		$uri = trim($all_data['URI'][0]);
-		$personal_uri = trim($all_data['Personal_uri'][0]);
-		$dc_identifier = $metadata_array['dc:identifier'];
+		$given_name = trim($metadata_array['structured_val']['given_name']);
+		$family_name = trim($metadata_array['structured_val']['family_name']);
 		$full_name = "";
-		if ($honorific)
-			$full_name = $full_name.$honorific.' ';
+		
 		if ($given_name)
 			$full_name = $full_name.$given_name.' ';
 		if ($family_name)
 			$full_name = $full_name.$family_name;
-		/*if ($email)
-			$full_name = $full_name.' '.$email;*/
 		
 		$match['name'] = $full_name;
 		
-		$key = "";
+		$uri = trim($metadata_array['id']);
 		$uri_pattern = "/^http:\/\//";
 		if($uri){
 			$match['uri'] = $uri;
-			//$key = $full_name.' <'.$uri.'>';
 		}
-		elseif($personal_uri){
-			$match['uri'] = $personal_uri;
-			//$key = $full_name.' <'.$personal_uri.'>';
-		}
-		else 
-			$match['uri'] = $dc_identifier;
-			//$key = $full_name.' <'.$dc_identifier.'>';
 			
 		if(!preg_match($uri_pattern, $match['uri'])){
 			$match['uri'] = "http://".$match['uri'];
 		}
 		
-		//$matches[$key] = $full_name; //this can be an array
-		
 		array_push($matches, $match);
 	}
+	
 	
 	drupal_json_output($matches);
 }
@@ -72,10 +50,22 @@ function lookUpPeople($keyword) {
 	try {
 		//$config = $this->getConfig();
 		//$url = $config['mint']['url'] . '/Parties_People/opensearch/lookup?searchTerms=' . urlencode($keyword);
-		$url = 'http://research-data.uws.edu.au:9001/mint/Parties_People/opensearch/lookup?searchTerms=' . urlencode($keyword);
-		//\OCP\Util::writeLog("crate_it::lookUpPeople", $url, \OCP\Util::DEBUG);
-
-		// Now call the mint
+		//$url = 'http://research-data.uws.edu.au:9001/mint/Parties_People/opensearch/lookup?searchTerms=' . urlencode($keyword);
+		
+		//Tokenize the string by comma
+		$names = explode(',', $keyword);
+		
+		if(count($names) > 1){
+			$params = 'fname=' . $names[1] . '&gname=' . $names[0];
+		}
+		else{
+			$params = 'fname=&gname=' . $names[0];
+		}
+		
+		//FML integration. 
+		$url = 'http://fml.data.ac.nz/fillmylist?entity_type=person&output=json&' . $params . '&email=&orcid=&equipment=&institution=';
+		//$url = 'http://localhost/OR2014-chalege/web_root/fillmylist?method=generic&entity_type=person&output=json&name=' . urlencode($keyword);
+		
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -88,8 +78,9 @@ function lookUpPeople($keyword) {
 			return array();
 		}
 		else {
+			
 			$content_array = json_decode($content);
-			$results = $content_array->results;
+			$results = $content_array->items;
 			return $results;
 		}
 	}
