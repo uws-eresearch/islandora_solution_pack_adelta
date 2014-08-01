@@ -12,7 +12,13 @@
   <div class="islandora-adelta-content-wrapper clearfix">
     <?php if (isset($islandora_content)): ?>
       <div class="islandora-adelta-content">
-        <?php print $islandora_content; ?>
+      <section id="photos">
+        <?php print $islandora_content;
+			  foreach ($other_images as $img) {
+			  	print $img;
+			  }
+        ?>
+        </section>
       </div>
     <?php endif; ?>
   <div class="islandora-adelta-sidebar">

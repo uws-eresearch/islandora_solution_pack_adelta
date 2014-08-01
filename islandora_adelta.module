@@ -222,19 +222,36 @@ function islandora_adelta_preprocess_islandora_adelta(array &$variables) {
   }
   // Medium size.
   if (isset($islandora_object['MEDIUM_SIZE'])) {
-    $medium_size_url = url("islandora/object/{$islandora_object->id}/datastream/MEDIUM_SIZE/view");
+    $medium_size_url = url("islandora/object/{$islandora_object->id}/datastream/MEDIUM_SIZE/view", array('absolute' => TRUE));
     $params = array(
       'title' => $islandora_object->label,
       'path' => $medium_size_url,
     );
     $variables['islandora_medium_img'] = theme('image', $params);
     if (isset($full_size_url)) {
-      $variables['islandora_content'] = l($variables['islandora_medium_img'], $full_size_url, array('html' => TRUE));
+      $variables['islandora_content'] = l($variables['islandora_medium_img'], $full_size_url, 
+      		array('html' => TRUE, 'attributes' => array('class' => 'img_gallery')));
     }
     else {
-      $variables['islandora_content'] = $variables['islandora_medium_img'];
+      $variables['islandora_content'] = l($variables['islandora_medium_img'], $medium_size_url, 
+      		array('html' => TRUE, 'attributes' => array('class' => 'img_gallery')));
     }
   }
+  
+  //Other images
+  $i = 1;
+  $variables['other_images'] = array();
+  while (isset($islandora_object['IMG'.$i])) {
+  	$img_url = url("islandora/object/{$islandora_object->id}/datastream/IMG" . $i. "/view", array('absolute' => TRUE));
+  	$params = array (
+  		'title' => $islandora_object->label,
+		'path' => $img_url
+  	);
+  	$variables['other_images'][] = l(theme('image', $params), $img_url, 
+  			array('html' => TRUE, 'attributes' => array('class' => 'img_gallery')));
+  	$i++;
+  }
+  
   $module_path = drupal_get_path('module', 'islandora_adelta');
   //Mods data
   $mods_doc = new DomDocument();
