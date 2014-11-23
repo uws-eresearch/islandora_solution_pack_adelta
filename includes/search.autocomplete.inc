@@ -16,20 +16,9 @@ function adelta_people_lookup($string) {
 	
 	foreach($results as $person){
 		$match = array();
-		$metadata_array = json_decode(json_encode($person), true);
+		$match['name'] = trim($person->given_names . ' ' . $person->family_name);
 		
-		$given_name = trim($metadata_array['structured_val']['given_name']);
-		$family_name = trim($metadata_array['structured_val']['family_name']);
-		$full_name = "";
-		
-		if ($given_name)
-			$full_name = $full_name.$given_name.' ';
-		if ($family_name)
-			$full_name = $full_name.$family_name;
-		
-		$match['name'] = $full_name;
-		
-		$uri = trim($metadata_array['id']);
+		$uri = trim($person->id);
 		$uri_pattern = "/^http:\/\//";
 		if($uri){
 			$match['uri'] = $uri;
@@ -52,19 +41,9 @@ function lookUpPeople($keyword) {
 		//$url = $config['mint']['url'] . '/Parties_People/opensearch/lookup?searchTerms=' . urlencode($keyword);
 		//$url = 'http://research-data.uws.edu.au:9001/mint/Parties_People/opensearch/lookup?searchTerms=' . urlencode($keyword);
 		
-		//Tokenize the string by comma
-		$names = explode(',', $keyword);
-		
-		if(count($names) > 1){
-			$params = 'fname=' . $names[1] . '&gname=' . $names[0];
-		}
-		else{
-			$params = 'fname=&gname=' . $names[0];
-		}
-		
-		//FML integration. 
-		$url = 'http://fml.data.ac.nz/fillmylist?entity_type=person&output=json&' . $params . '&email=&orcid=&equipment=&institution=';
-		//$url = 'http://localhost/OR2014-chalege/web_root/fillmylist?method=generic&entity_type=person&output=json&name=' . urlencode($keyword);
+		//DAAO integration
+		$keyword = urlencode($keyword);
+		$url = 'http://api-daao.hol.ly/v1/person/?name=' . $keyword . '&dob=';
 		
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
@@ -78,10 +57,7 @@ function lookUpPeople($keyword) {
 			return array();
 		}
 		else {
-			
-			$content_array = json_decode($content);
-			$results = $content_array->items;
-			return $results;
+			return json_decode($content);
 		}
 	}
 	catch (Exception $e) {

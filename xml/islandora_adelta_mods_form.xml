@@ -4,7 +4,7 @@
 	TRUE
 	</access><autocomplete_path>islandora_adelta/adelta-people-lookup</autocomplete_path>
 	<description>Type name as givenname,familyname. If you want to search by family name, prepend a comma as in ,familyname</description>
-	<required>TRUE</required><title>Name (givenname,familyname)</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>xml</type><prefix>NULL</prefix><value>&lt;namePart&gt;%value%&lt;/namePart&gt;</value></create><read><path>mods:namePart</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete><path>self::node()</path><context>self</context></delete></actions>
+	<required>TRUE</required><title>Name</title><tree>TRUE</tree><actions><create><path>self::node()</path><context>parent</context><schema/><type>xml</type><prefix>NULL</prefix><value>&lt;namePart&gt;%value%&lt;/namePart&gt;</value></create><read><path>mods:namePart</path><context>parent</context></read><update><path>self::node()</path><context>self</context></update><delete><path>self::node()</path><context>self</context></delete></actions>
 	</properties></element>
 	<element name="uri">
 		<properties><type>textfield</type>
@@ -95,7 +95,7 @@
                        <autocomplete_path>islandora_adelta/adelta-people-lookup</autocomplete_path>
                        <description>Type name as givenname,familyname. If you want to search by family name, prepend a comma as in ,familyname</description>
                        <required>FALSE</required>
-                       <title>Name (givenname,familyname)</title>
+                       <title>Name</title>
                        <tree>TRUE</tree>
                        <actions>
                                <create>
@@ -519,7 +519,7 @@
 			<autocomplete_path>islandora_adelta/adelta-people-lookup</autocomplete_path>
 			<description>Type name as givenname,familyname. If you want to search by family name, prepend a comma as in ,familyname</description>
 			<required>FALSE</required>
-			<title>Name (givenname,familyname)</title>
+			<title>Name</title>
 			<tree>TRUE</tree>
 			<actions>
 				<create>
