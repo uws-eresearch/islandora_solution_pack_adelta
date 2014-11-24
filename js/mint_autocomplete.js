@@ -81,14 +81,17 @@ if(Drupal.jsAC){
     		}*/
     		var entity;
     		var changed = this.selected && ((keycode && keycode != 46 && keycode != 8 && keycode != 27) || !keycode);
+    		var uri_id = this.input.id.replace("adelta-namepart", "uri");
     		if (changed) {
     			entity = $(this.selected).data('uri');//this.selected.dataEntity;
     			this.input.value = $(this.selected).data('autocompleteValue');
     			
     			//put the value in the other text field. No need to trigger an event
     			//get the id using a regex. replace namepart with uri
-    			var uri_id = this.input.id.replace("adelta-namepart", "uri");
     			$('#'+uri_id).val($(this.selected).data('uri'));
+    		}
+    		else{
+    			$('#'+uri_id).val('');
     		}
     		// Hide popup.
     		var popup = this.popup;
