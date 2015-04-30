@@ -43,7 +43,7 @@ function lookUpPeople($keyword) {
 		
 		//DAAO integration
 		$keyword = urlencode($keyword);
-		$url = 'http://api-daao.hol.ly/v1/person/?name=' . $keyword . '&dob=';
+		$url = 'http://api.daao.org.au/v1/person/?name=' . $keyword . '&dob=';
 		
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
